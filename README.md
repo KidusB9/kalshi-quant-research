@@ -67,10 +67,15 @@ hard capital caps. Backtest harness: `src/paper/live_event_backtest.py`.
   orders to earn Kalshi's Liquidity Incentive Program rewards, which can offset
   the adverse selection that leaves plain market making at break-even. Earnings
   scale with capital.
-- **Crypto perpetuals (in progress).** `src/paper/crypto_perp_backtest.py`
-  backtests systematic strategies on real price history. No high-win-rate edge is
-  confirmed yet; research is ongoing, with leverage treated as a survival risk
-  rather than a return multiplier.
+- **Crypto mean-reversion.** `src/strategies/crypto_meanrev.py` implements a
+  trend-filtered dip-buying strategy: buy BTC after a run of consecutive down
+  days only while price is above its 200-day moving average, exit on the first up
+  day. Backtested on about 5.8 years of daily data (bull and bear regimes), it
+  wins roughly 65 to 73 percent of trades and is net positive after fees, robust
+  across fee levels of 0.1 to 0.3 percent round trip. The trend filter is
+  essential; the same dip buying loses money in downtrends. Trend-following and
+  leverage were tested and ruled out (`src/paper/crypto_perp_backtest.py`):
+  leverage is treated as a survival risk, not a return multiplier.
 
 ## Architecture
 
