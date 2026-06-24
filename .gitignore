@@ -211,3 +211,6 @@ secrets.yaml
 *.pem
 *.key
 .env*
+
+# backtest cache
+data/*.json
