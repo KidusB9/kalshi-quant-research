@@ -33,7 +33,14 @@ from typing import List, Tuple
 
 import httpx
 
-FEE_PER_LEG = 0.0004        # ~4 bps taker; entry+exit on 2 legs = 4 legs round trip
+# REALISTIC fees (the load-bearing economic input).
+# Coinbase Advanced retail taker is ~0.60% one-way (lower at higher volume tiers
+# or as a maker ~0.40%); Kalshi perp fee is not in public docs (confirm live) so
+# a placeholder is used. One full cycle = enter (buy spot + short perp) +
+# exit (sell spot + close perp) = 2*(coinbase + kalshi).
+COINBASE_TAKER = 0.006
+KALSHI_PERP_FEE = 0.0007    # placeholder -- MUST be read from a live fill
+FEE_ENTER = COINBASE_TAKER + KALSHI_PERP_FEE   # one leg-pair (spot+perp)
 PERIODS_PER_YEAR = 3 * 365  # 8h funding
 CACHE = os.path.join(os.path.dirname(__file__), "..", "..", "data", "btc_funding_binance.json")
 
@@ -115,6 +122,7 @@ def backtest(rates: List[float], hurdle_in: float, hurdle_out: float, ema_n: int
     held = 0
     collected = []        # funding collected per held period (on notional)
     fees = 0.0
+    cycles = 0
     in_pos = False
     ema = rates[0]
     alpha = 2 / (ema_n + 1)
@@ -124,10 +132,11 @@ def backtest(rates: List[float], hurdle_in: float, hurdle_out: float, ema_n: int
         ann = _annualize(ema)
         if not in_pos and ann > hurdle_in:
             in_pos = True
-            fees += 2 * FEE_PER_LEG  # entry: buy spot + short perp
+            cycles += 1
+            fees += FEE_ENTER  # entry: buy spot + short perp
         elif in_pos and ann < hurdle_out:
             in_pos = False
-            fees += 2 * FEE_PER_LEG  # exit
+            fees += FEE_ENTER  # exit: sell spot + close perp
         if in_pos:
             collected.append(f)      # short collects +f when funding positive
             held += 1
@@ -138,7 +147,7 @@ def backtest(rates: List[float], hurdle_in: float, hurdle_out: float, ema_n: int
     net_on_capital = net_on_notional / 2          # 2x capital (both legs)
     years = len(rates) / PERIODS_PER_YEAR
     return {
-        "periods_total": len(rates), "periods_held": held,
+        "periods_total": len(rates), "periods_held": held, "cycles": cycles,
         "win_rate": (periods_pos / held * 100) if held else 0.0,
         "gross_on_notional_pct": gross * 100,
         "net_on_2x_capital_pct": net_on_capital * 100,
@@ -174,23 +183,26 @@ def run() -> None:
     pos = sum(1 for r in rates if r > 0) / len(rates) * 100
     print(f"\nFull sample: {pos:.1f}% positive | avg {statistics.mean(rates)*100:.4f}%/8h "
           f"({_annualize(statistics.mean(rates))*100:+.1f}% annualized)\n")
-    print("ALWAYS-ON carry (no gating) vs HURDLE-GATED:\n")
-    print(f"{'config':28s} {'held':>6} {'win%':>6} {'gross%':>8} {'net/2x%':>9} {'APR/2x%':>9}")
-    # always-on = hurdle far below 0 so it always holds
+    be_hurdle = FEE_ENTER * 2 * PERIODS_PER_YEAR / (len(rates)) * 100  # if you churn every period (worst)
+    print(f"REALISTIC fees: Coinbase {COINBASE_TAKER*100:.2f}% + Kalshi perp {KALSHI_PERP_FEE*100:.2f}% "
+          f"per leg-pair; full enter+exit cycle = {FEE_ENTER*2*100:.2f}%.\n")
+    print(f"{'config':26s} {'cycles':>6} {'held':>6} {'win%':>6} {'fees%':>7} {'APR/2x%':>9}")
     r0 = backtest(rates, hurdle_in=-999, hurdle_out=-1000)
-    print(f"{'always-on':28s} {r0['periods_held']:6d} {r0['win_rate']:5.1f} "
-          f"{r0['gross_on_notional_pct']:+7.2f} {r0['net_on_2x_capital_pct']:+8.2f} {r0['apr_on_2x_capital_pct']:+8.2f}")
+    print(f"{'always-on (1 entry)':26s} {r0['cycles']:6d} {r0['periods_held']:6d} {r0['win_rate']:5.1f} "
+          f"{r0['fees_pct']:6.2f} {r0['apr_on_2x_capital_pct']:+8.2f}")
     for hin, hout in [(0.05, 0.0), (0.08, 0.03), (0.12, 0.05)]:
         r = backtest(rates, hurdle_in=hin, hurdle_out=hout)
-        print(f"{'gate in='+str(int(hin*100))+'% out='+str(int(hout*100))+'%':28s} "
-              f"{r['periods_held']:6d} {r['win_rate']:5.1f} {r['gross_on_notional_pct']:+7.2f} "
-              f"{r['net_on_2x_capital_pct']:+8.2f} {r['apr_on_2x_capital_pct']:+8.2f}")
+        print(f"{'gate in='+str(int(hin*100))+'% out='+str(int(hout*100))+'%':26s} "
+              f"{r['cycles']:6d} {r['periods_held']:6d} {r['win_rate']:5.1f} "
+              f"{r['fees_pct']:6.2f} {r['apr_on_2x_capital_pct']:+8.2f}")
     print("-" * 84)
-    print("Read: win% is how often you collect (the 'win more than lose' metric).")
-    print("APR/2x is the honest net return on total capital deployed (both legs).")
-    print("Gating raises win% and APR by sitting out low/negative-funding stretches.")
-    print("VENUE NOTE: realized edge depends on YOUR short venue's funding; confirm")
-    print("the live perp venue (Kalshi/Coinbase/exchange) before going live.")
+    print("KEY: at realistic fees, CHURNING (gating in/out often) is killed by fee")
+    print("drag -- each enter+exit cycle costs ~1.3%. The only viable mode is")
+    print("BUY-AND-HOLD the carry (1 entry) and stay in while funding is positive.")
+    print(f"Even then APR is regime-dependent (great 2021/2024, ~0 now in 2026).")
+    print("VENUE: Kalshi BTC perp (KXBTCPERP) confirmed API-shortable; Kalshi's own")
+    print("funding (BRTI-based, 2% cap) may differ from this offshore proxy -- its")
+    print("history is only ~3 weeks old, so realized edge is uncertain until live.")
     print("=" * 84)
 
 
