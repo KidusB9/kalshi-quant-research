@@ -151,7 +151,8 @@ async def _main():
     if ("--live" in __import__("sys").argv) and not live:
         print("LIVE requested but blocked: set TRADING_HALTED=false AND SOCCER_LIVE=true.")
     print("=" * 80)
-    held: set = set()
+    # Seed dedup with already-held tickers (passed by the autonomous runner).
+    held: set = {t for t in os.getenv("RUNNER_SKIP_TICKERS", "").split(",") if t}
     spent = [0.0]
     if loop:
         print(f"Looping every {POLL_SECONDS}s. Ctrl+C to stop.\n")

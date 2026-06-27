@@ -95,7 +95,9 @@ class Entry:
 async def find_entries() -> List[Entry]:
     client = KalshiClient()
     entries: List[Entry] = []
-    families = set()
+    # Seed dedup with already-held families (passed by the autonomous runner) so
+    # repeated runs never re-buy the same market.
+    families = {_family(t) for t in os.getenv("RUNNER_SKIP_TICKERS", "").split(",") if t}
     capital = 0.0
     cursor = None
     now = time.time()
