@@ -31,10 +31,11 @@ margin filters bias toward genuine lags, but validate at small size first.
 from __future__ import annotations
 
 import asyncio
+import json
 import os
 import time
 import uuid
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 from src.clients.kalshi_client import KalshiClient
 from src.utils.fees import kalshi_taker_fee
@@ -43,11 +44,30 @@ SOCCER_KEYS = ("WCGAME", "SOCCER", "UCLGAME", "EPLGAME", "MLSGAME", "UEFA", "LIG
 MID_MIN = float(os.getenv("SOCCER_MID_MIN", "0.80"))
 ASK_MAX = float(os.getenv("SOCCER_ASK_MAX", "0.92"))
 MIN_MARGIN = float(os.getenv("SOCCER_MIN_MARGIN", "0.05"))
-JUMP = float(os.getenv("SOCCER_JUMP", "0.03"))         # min recent upward move in mid
+# We track our OWN price history across polls and fire when a market's mid ROSE
+# by RISE_MIN over the last LOOKBACK seconds (a goal-driven move), rather than
+# relying on Kalshi's single "previous" quote which updates too fast to catch.
+RISE_MIN = float(os.getenv("SOCCER_RISE_MIN", "0.04"))
+LOOKBACK = int(os.getenv("SOCCER_LOOKBACK", "900"))    # 15 min window
 MIN_VOL24 = float(os.getenv("SOCCER_MIN_VOL24", "1000"))
 CONTRACTS = int(os.getenv("SOCCER_CONTRACTS", "5"))
 MAX_TOTAL = float(os.getenv("SOCCER_MAX_CAPITAL", "20"))
 POLL_SECONDS = int(os.getenv("SOCCER_POLL_SECONDS", "90"))
+HIST_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "data", "soccer_price_history.json")
+
+
+def _load_hist() -> Dict[str, list]:
+    if os.path.exists(HIST_PATH):
+        try:
+            return json.load(open(HIST_PATH))
+        except Exception:
+            return {}
+    return {}
+
+
+def _save_hist(h: Dict[str, list]) -> None:
+    os.makedirs(os.path.dirname(HIST_PATH), exist_ok=True)
+    json.dump(h, open(HIST_PATH, "w"))
 
 
 def _f(x) -> Optional[float]:
@@ -67,6 +87,9 @@ def _is_soccer_game(tk: str) -> bool:
 async def scan(client: KalshiClient, held: set) -> List[dict]:
     cands = []
     cursor = None
+    now = time.time()
+    hist = _load_hist()
+    seen_now = {}
     for _ in range(30):
         try:
             resp = await client.get_events(limit=200, cursor=cursor, status="open", with_nested_markets=True)
@@ -79,7 +102,7 @@ async def scan(client: KalshiClient, held: set) -> List[dict]:
         for e in evs:
             for m in (e.get("markets") or []):
                 tk = m.get("ticker", "")
-                if not _is_soccer_game(tk) or tk in held:
+                if not _is_soccer_game(tk):
                     continue
                 yb, ya = _f(m.get("yes_bid_dollars")), _f(m.get("yes_ask_dollars"))
                 v24 = _f(m.get("volume_24h_fp")) or 0.0
@@ -87,18 +110,28 @@ async def scan(client: KalshiClient, held: set) -> List[dict]:
                 if yb is None or ya is None:
                     continue
                 mid = (yb + ya) / 2
-                pyb, pya = _f(m.get("previous_yes_bid_dollars")), _f(m.get("previous_yes_ask_dollars"))
-                prev_mid = ((pyb + pya) / 2) if (pyb and pya) else mid
-                jump = mid - prev_mid
+                # record this observation in our own price history
+                seen_now[tk] = mid
+                obs = [p for p in hist.get(tk, []) if now - p[0] <= LOOKBACK]
+                obs.append([now, mid])
+                hist[tk] = obs
+                if tk in held:
+                    continue
+                # rise = how much the mid climbed from its lowest point in the window
+                window_lows = [p[1] for p in obs]
+                rise = mid - min(window_lows) if len(obs) >= 2 else 0.0
                 margin = (1.0 - ya) - kalshi_taker_fee(ya, 1, "standard")
                 if (mid >= MID_MIN and ya <= ASK_MAX and 0.01 < ya < 0.999 and margin >= MIN_MARGIN
-                        and v24 >= MIN_VOL24 and asz >= CONTRACTS and jump >= JUMP):
+                        and v24 >= MIN_VOL24 and asz >= CONTRACTS and rise >= RISE_MIN):
                     cands.append({"ticker": tk, "title": m.get("title", "")[:40], "mid": round(mid, 3),
-                                  "ask": round(ya, 3), "jump": round(jump, 3), "margin": round(margin, 4),
+                                  "ask": round(ya, 3), "jump": round(rise, 3), "margin": round(margin, 4),
                                   "vol24": v24, "cost": round(ya * CONTRACTS, 2)})
         cursor = resp.get("cursor")
         if not cursor:
             break
+    # prune history to tracked markets seen recently, then persist
+    hist = {tk: [p for p in obs if now - p[0] <= LOOKBACK] for tk, obs in hist.items() if tk in seen_now}
+    _save_hist(hist)
     cands.sort(key=lambda c: c["jump"], reverse=True)
     return cands
 
@@ -146,7 +179,7 @@ async def _main():
     loop = "--loop" in __import__("sys").argv
     print("=" * 80)
     print(f"SOCCER LIVE IN-GAME TRADER  ({'LIVE' if live else 'DRY-RUN'}{' / loop' if loop else ''})")
-    print(f"filters: mid>={MID_MIN}, ask<={ASK_MAX}, jump>=+{JUMP}, margin>={MIN_MARGIN}, "
+    print(f"filters: mid>={MID_MIN}, ask<={ASK_MAX}, rise>=+{RISE_MIN} over {LOOKBACK//60}min, margin>={MIN_MARGIN}, "
           f"vol24>={MIN_VOL24:.0f}, cap ${MAX_TOTAL:.0f}, {CONTRACTS} contracts")
     if ("--live" in __import__("sys").argv) and not live:
         print("LIVE requested but blocked: set TRADING_HALTED=false AND SOCCER_LIVE=true.")
