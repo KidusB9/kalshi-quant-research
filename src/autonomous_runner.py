@@ -117,9 +117,13 @@ async def _tick(state: dict, live: bool) -> None:
         return
     skip = await _held_tickers()
     cash = await _cash()
-    can_trade = live and cash >= CASH_FLOOR
+    # Strict floor: a single run may deploy at most (cash - floor), so it can
+    # never pull cash below the reserve even with the per-run cap.
+    headroom = max(0.0, cash - CASH_FLOOR)
+    can_trade = live and headroom >= 1.0
+    run_cap = round(min(float(RUN_CAP), headroom), 2)
     if live and not can_trade:
-        log(f"cash ${cash:.2f} < floor ${CASH_FLOOR:.0f} -> trading paused (dry-run only).")
+        log(f"cash ${cash:.2f}, headroom ${headroom:.2f} -> trading paused (need >=$1 above ${CASH_FLOOR:.0f} floor).")
     for name in due:
         cfg = SCHEDULE[name]
         args, env_extra = [], {"RUNNER_SKIP_TICKERS": skip}
@@ -127,6 +131,10 @@ async def _tick(state: dict, live: bool) -> None:
             args = ["--live"]
             env_extra["TRADING_HALTED"] = "false"
             env_extra.update(cfg["live_env"])
+            # override caps to the strict headroom (priority: soccer keeps cash
+            # available by capping sports to the same small headroom too)
+            env_extra["CONV_MAX_CAPITAL"] = str(run_cap)
+            env_extra["SOCCER_MAX_CAPITAL"] = str(run_cap)
         out = _run(cfg["module"], args, env_extra)
         log(f"{name:8s} -> {_summary(name, out)}")
         state[name] = now
