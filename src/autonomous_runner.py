@@ -30,6 +30,7 @@ Run:
 from __future__ import annotations
 
 import asyncio
+import json
 import os
 import subprocess
 import sys
@@ -38,6 +39,26 @@ from datetime import datetime, timezone
 
 CASH_FLOOR = float(os.getenv("RUNNER_CASH_FLOOR", "5"))
 TICK_SECONDS = 30
+STATE_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "runner_state.json")
+
+
+def _load_state() -> dict:
+    """Persist last-run times across restarts so a relaunch does NOT re-fire a
+    strategy that already ran within its interval (the over-deploy bug)."""
+    if os.path.exists(STATE_PATH):
+        try:
+            return {k: float(v) for k, v in json.load(open(STATE_PATH)).items()}
+        except Exception:
+            return {}
+    return {}
+
+
+def _save_state(state: dict) -> None:
+    try:
+        os.makedirs(os.path.dirname(STATE_PATH), exist_ok=True)
+        json.dump(state, open(STATE_PATH, "w"))
+    except Exception:
+        pass
 
 # Per-run capital cap (bounds a single cycle's deployment even if cash is ample).
 RUN_CAP = os.getenv("RUNNER_PER_RUN_CAP", "10")
@@ -138,6 +159,7 @@ async def _tick(state: dict, live: bool) -> None:
         out = _run(cfg["module"], args, env_extra)
         log(f"{name:8s} -> {_summary(name, out)}")
         state[name] = now
+        _save_state(state)
 
 
 async def main() -> None:
@@ -147,7 +169,10 @@ async def main() -> None:
     log("cadence: soccer 90s | sports 3h | crypto 24h | funding 24h")
     log(f"cash floor ${CASH_FLOOR:.0f} | per-strategy caps apply | Ctrl+C to stop")
     log("=" * 60)
-    state: dict = {}
+    state: dict = _load_state()
+    if state:
+        ago = {k: f"{(time.time()-v)/60:.0f}m ago" for k, v in state.items()}
+        log(f"resumed state (won't re-fire recent runs): {ago}")
     while True:
         try:
             await _tick(state, live)
