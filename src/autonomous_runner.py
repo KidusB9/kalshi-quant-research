@@ -38,7 +38,7 @@ import time
 from datetime import datetime, timezone
 
 CASH_FLOOR = float(os.getenv("RUNNER_CASH_FLOOR", "5"))
-TICK_SECONDS = 30
+TICK_SECONDS = 20
 STATE_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "runner_state.json")
 
 
@@ -64,14 +64,19 @@ def _save_state(state: dict) -> None:
 RUN_CAP = os.getenv("RUNNER_PER_RUN_CAP", "10")
 
 SCHEDULE = {
-    "soccer":  {"interval": 90,          "module": "src.strategies.soccer_live_trader",
-                "live_env": {"SOCCER_LIVE": "true", "SOCCER_MAX_CAPITAL": RUN_CAP}, "trade": True},
+    # exit runs fastest: it SELLS positions that turned against us. Sells are
+    # always allowed (kill switch only blocks buys) and recover cash, so it is
+    # NOT gated by the cash floor.
+    "exit":    {"interval": 20,          "module": "src.strategies.exit_monitor",
+                "live_env": {"EXIT_LIVE": "true"}, "kind": "sell"},
+    "soccer":  {"interval": 45,          "module": "src.strategies.soccer_live_trader",
+                "live_env": {"SOCCER_LIVE": "true"}, "kind": "buy"},
     "sports":  {"interval": 3 * 3600,    "module": "src.strategies.convergence_trader",
-                "live_env": {"CONV_LIVE": "true", "CONV_MAX_CAPITAL": RUN_CAP}, "trade": True},
+                "live_env": {"CONV_LIVE": "true"}, "kind": "buy"},
     "crypto":  {"interval": 24 * 3600,   "module": "src.strategies.crypto_meanrev",
-                "live_env": {}, "trade": False},
+                "live_env": {}, "kind": "signal"},
     "funding": {"interval": 24 * 3600,   "module": "src.strategies.funding_monitor",
-                "live_env": {}, "trade": False},
+                "live_env": {}, "kind": "signal"},
 }
 
 
@@ -122,6 +127,7 @@ def _run(module: str, args: list, env_extra: dict) -> str:
 def _summary(name: str, output: str) -> str:
     # pull the most informative line per strategy
     keys = {
+        "exit":   ("SOLD", "WOULD SELL", "healthy"),
         "soccer": ("signal", "LIVE BET", "no in-game"),
         "sports": ("Entries:", "LIVE: placed", "No markets"),
         "crypto": ("ENTER LONG", "No entry today"),
@@ -148,12 +154,15 @@ async def _tick(state: dict, live: bool) -> None:
     for name in due:
         cfg = SCHEDULE[name]
         args, env_extra = [], {"RUNNER_SKIP_TICKERS": skip}
-        if cfg["trade"] and can_trade:
+        kind = cfg["kind"]
+        if kind == "sell" and live:
+            # protective exit: always live when the runner is live, no cash gate
+            env_extra.update(cfg["live_env"])
+        elif kind == "buy" and can_trade:
             args = ["--live"]
             env_extra["TRADING_HALTED"] = "false"
             env_extra.update(cfg["live_env"])
-            # override caps to the strict headroom (priority: soccer keeps cash
-            # available by capping sports to the same small headroom too)
+            # strict headroom cap on both buy strategies
             env_extra["CONV_MAX_CAPITAL"] = str(run_cap)
             env_extra["SOCCER_MAX_CAPITAL"] = str(run_cap)
         out = _run(cfg["module"], args, env_extra)
