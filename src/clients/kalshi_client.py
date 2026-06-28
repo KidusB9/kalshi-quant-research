@@ -440,12 +440,15 @@ class KalshiClient(TradingLoggerMixin):
             "ticker": ticker,
             "client_order_id": client_order_id,
             "side": v2_side,
-            "count": f"{count:.2f}",
+            "count": str(int(count)),
             "time_in_force": "good_till_canceled",
             "self_trade_prevention_type": "taker_at_cross",
             "post_only": False,
             "cancel_order_on_pause": False,
-            "reduce_only": False,
+            # EXCHANGE-LEVEL BACKSTOP: a sell can only ever REDUCE a position,
+            # never open/extend a short. This makes the oversell-into-short bug
+            # impossible at the venue even if app logic has a race.
+            "reduce_only": (action == "sell"),
         }
 
         if price_dollars is not None:

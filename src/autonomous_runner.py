@@ -86,6 +86,31 @@ SCHEDULE = {
 }
 
 
+LOCK_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "runner.lock")
+_lock_fh = None
+
+
+def _acquire_single_instance_lock() -> bool:
+    """OS-level exclusive lock so only ONE runner can trade at a time. The lock
+    is auto-released by the OS if the process dies, so the .bat auto-restart still
+    works after a crash. Fails OPEN if locking is unavailable (e.g. non-Windows)."""
+    global _lock_fh
+    try:
+        os.makedirs(os.path.dirname(LOCK_PATH), exist_ok=True)
+        _lock_fh = open(LOCK_PATH, "w")
+        try:
+            import msvcrt
+            msvcrt.locking(_lock_fh.fileno(), msvcrt.LK_NBLCK, 1)
+        except ImportError:
+            import fcntl
+            fcntl.flock(_lock_fh.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        return True
+    except OSError:
+        return False
+    except Exception:
+        return True  # don't block trading on an unexpected lock error
+
+
 def log(msg: str) -> None:
     print(f"[{datetime.now(timezone.utc).strftime('%H:%M:%S')}Z] {msg}", flush=True)
 
@@ -96,8 +121,12 @@ async def _held_tickers() -> str:
     try:
         r = await c._make_authenticated_request("GET", "/trade-api/v2/portfolio/orders",
                                                 params={"limit": 200}, require_auth=True)
+        # Dedup must include RESTING/pending buys, not just executed -- otherwise
+        # an unfilled limit buy is invisible and the same ticker gets re-bought
+        # every tick, over-deploying. (This was a real over-deploy cause.)
+        active = ("executed", "resting", "accepted", "pending")
         held = {o["ticker"] for o in r.get("orders", [])
-                if o.get("action") == "buy" and o.get("status") == "executed"}
+                if o.get("action") == "buy" and o.get("status") in active}
         return ",".join(sorted(held))
     except Exception:
         return ""
@@ -154,13 +183,15 @@ async def _tick(state: dict, live: bool) -> None:
     # never pull cash below the reserve even with the per-run cap.
     headroom = max(0.0, cash - CASH_FLOOR)
     can_trade = live and headroom >= 1.0
-    # sports must leave the soccer reserve + floor untouched; soccer may use down
-    # to the floor (it gets the reserve).
-    sports_cap = round(min(SPORTS_CAP, max(0.0, cash - CASH_FLOOR - SOCCER_RESERVE)), 2)
-    soccer_cap = round(min(SOCCER_CAP, headroom), 2)
     if live and not can_trade:
         log(f"cash ${cash:.2f}, headroom ${headroom:.2f} -> trading paused (need >=$1 above ${CASH_FLOOR:.0f} floor).")
-    for name in due:
+    # Process in a fixed priority so caps are NETTED against a single running
+    # budget: combined deployment this tick can never exceed headroom (= cash -
+    # floor), so the floor can't be breached even if every buy fires at once.
+    # Soccer gets first claim on the reserve; sports only uses excess above it.
+    remaining = headroom
+    order = sorted(due, key=lambda n: {"exit": 0, "soccer": 1, "sports": 2}.get(n, 9))
+    for name in order:
         cfg = SCHEDULE[name]
         args, env_extra = [], {"RUNNER_SKIP_TICKERS": skip}
         kind = cfg["kind"]
@@ -168,13 +199,20 @@ async def _tick(state: dict, live: bool) -> None:
             # protective exit: always live when the runner is live, no cash gate
             env_extra.update(cfg["live_env"])
         elif kind == "buy" and can_trade:
+            if name == "soccer":
+                cap = round(min(SOCCER_CAP, remaining), 2)
+            else:  # sports must leave the soccer reserve untouched
+                cap = round(min(SPORTS_CAP, max(0.0, remaining - SOCCER_RESERVE)), 2)
+            if cap < 1.0:
+                log(f"{name:8s} -> skipped (only ${remaining:.2f} headroom left this tick)")
+                state[name] = now
+                _save_state(state)
+                continue
+            remaining = round(remaining - cap, 2)   # reserve it from the shared budget
             args = ["--live"]
             env_extra["TRADING_HALTED"] = "false"
             env_extra.update(cfg["live_env"])
-            if name == "sports":
-                env_extra["CONV_MAX_CAPITAL"] = str(sports_cap)
-            elif name == "soccer":
-                env_extra["SOCCER_MAX_CAPITAL"] = str(soccer_cap)
+            env_extra["CONV_MAX_CAPITAL" if name == "sports" else "SOCCER_MAX_CAPITAL"] = str(cap)
         out = _run(cfg["module"], args, env_extra)
         log(f"{name:8s} -> {_summary(name, out)}")
         state[name] = now
@@ -183,6 +221,9 @@ async def _tick(state: dict, live: bool) -> None:
 
 async def main() -> None:
     live = "--live" in sys.argv
+    if not _acquire_single_instance_lock():
+        log("Another runner instance is already running (lock held). Exiting to avoid double-trading.")
+        return
     log("=" * 60)
     log(f"AUTONOMOUS RUNNER starting ({'LIVE' if live else 'DRY-RUN'})")
     log("cadence: soccer 90s | sports 3h | crypto 24h | funding 24h")

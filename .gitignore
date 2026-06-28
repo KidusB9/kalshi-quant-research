@@ -214,3 +214,6 @@ secrets.yaml
 
 # backtest cache
 data/*.json
+
+# runner lock
+data/*.lock
