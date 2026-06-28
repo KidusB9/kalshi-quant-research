@@ -60,8 +60,14 @@ def _save_state(state: dict) -> None:
     except Exception:
         pass
 
-# Per-run capital cap (bounds a single cycle's deployment even if cash is ample).
-RUN_CAP = os.getenv("RUNNER_PER_RUN_CAP", "10")
+# Per-run capital caps. Sports is the PROVEN edge so it stays primary, but is
+# slowed and made to respect a soccer reserve so it stops hogging all the cash.
+# Soccer is UNPROVEN -- the reserve is dry powder to TEST it during the World Cup
+# without sacrificing the proven sports edge. Set SOCCER_RESERVE=0 to disable
+# (e.g. between the Cup ending and the domestic leagues starting).
+SPORTS_CAP = float(os.getenv("RUNNER_SPORTS_CAP", "4"))
+SOCCER_CAP = float(os.getenv("RUNNER_SOCCER_CAP", "6"))
+SOCCER_RESERVE = float(os.getenv("RUNNER_SOCCER_RESERVE", "10"))
 
 SCHEDULE = {
     # exit runs fastest: it SELLS positions that turned against us. Sells are
@@ -148,7 +154,10 @@ async def _tick(state: dict, live: bool) -> None:
     # never pull cash below the reserve even with the per-run cap.
     headroom = max(0.0, cash - CASH_FLOOR)
     can_trade = live and headroom >= 1.0
-    run_cap = round(min(float(RUN_CAP), headroom), 2)
+    # sports must leave the soccer reserve + floor untouched; soccer may use down
+    # to the floor (it gets the reserve).
+    sports_cap = round(min(SPORTS_CAP, max(0.0, cash - CASH_FLOOR - SOCCER_RESERVE)), 2)
+    soccer_cap = round(min(SOCCER_CAP, headroom), 2)
     if live and not can_trade:
         log(f"cash ${cash:.2f}, headroom ${headroom:.2f} -> trading paused (need >=$1 above ${CASH_FLOOR:.0f} floor).")
     for name in due:
@@ -162,9 +171,10 @@ async def _tick(state: dict, live: bool) -> None:
             args = ["--live"]
             env_extra["TRADING_HALTED"] = "false"
             env_extra.update(cfg["live_env"])
-            # strict headroom cap on both buy strategies
-            env_extra["CONV_MAX_CAPITAL"] = str(run_cap)
-            env_extra["SOCCER_MAX_CAPITAL"] = str(run_cap)
+            if name == "sports":
+                env_extra["CONV_MAX_CAPITAL"] = str(sports_cap)
+            elif name == "soccer":
+                env_extra["SOCCER_MAX_CAPITAL"] = str(soccer_cap)
         out = _run(cfg["module"], args, env_extra)
         log(f"{name:8s} -> {_summary(name, out)}")
         state[name] = now
