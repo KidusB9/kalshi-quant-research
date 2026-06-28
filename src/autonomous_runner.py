@@ -95,9 +95,12 @@ def _acquire_single_instance_lock() -> bool:
     is auto-released by the OS if the process dies, so the .bat auto-restart still
     works after a crash. Fails OPEN if locking is unavailable (e.g. non-Windows)."""
     global _lock_fh
-    try:
+    try:  # setting up the lock file failing must FAIL OPEN (don't block trading)
         os.makedirs(os.path.dirname(LOCK_PATH), exist_ok=True)
         _lock_fh = open(LOCK_PATH, "w")
+    except Exception:
+        return True
+    try:  # only an actual lock conflict means another instance holds it
         try:
             import msvcrt
             msvcrt.locking(_lock_fh.fileno(), msvcrt.LK_NBLCK, 1)
@@ -106,9 +109,9 @@ def _acquire_single_instance_lock() -> bool:
             fcntl.flock(_lock_fh.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
         return True
     except OSError:
-        return False
+        return False  # lock held by another running instance -> fail closed
     except Exception:
-        return True  # don't block trading on an unexpected lock error
+        return True  # unexpected lock error -> fail open
 
 
 def log(msg: str) -> None:
