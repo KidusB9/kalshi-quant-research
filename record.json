@@ -1,7 +1,7 @@
 {
  "data_age_days": 0,
  "date": "2026-08-26",
- "disclaimer": "Not financial advice. Past results are no guarantee of future results. Published automatically without human review.",
+ "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
   "change": -44.97,
   "current": 332.32,
@@ -177,10 +177,10 @@
    "n": 852937
   }
  },
- "generated_at": "2026-08-27T04:00:51+00:00",
+ "generated_at": "2026-08-27T04:22:23+00:00",
  "last_mark": "2026-08-26",
  "open_positions": 7,
- "risk_snapshots": 956,
+ "risk_snapshots": 957,
  "schema": 2,
  "settled_by_series": [
   {
