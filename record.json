@@ -1,4 +1,5 @@
 {
+ "data_age_days": 0,
  "date": "2026-08-26",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Published automatically without human review.",
  "equity": {
@@ -176,20 +177,12 @@
    "n": 852937
   }
  },
- "generated_at": "2026-08-27T03:21:49+00:00",
+ "generated_at": "2026-08-27T03:59:00+00:00",
+ "last_mark": "2026-08-26",
  "open_positions": 7,
- "risk_snapshots": 955,
- "schema": 1,
+ "risk_snapshots": 956,
+ "schema": 2,
  "settled_by_series": [
-  {
-   "engine": "snipe",
-   "losses": 2,
-   "net_usd": 30.0,
-   "series": "KXWIN",
-   "settled": 20,
-   "status": "promoted",
-   "wins": 18
-  },
   {
    "engine": "convergence",
    "losses": 0,
@@ -282,10 +275,10 @@
   }
  ],
  "settled_totals": {
-  "losses": 45,
-  "net_usd": 9.28,
-  "settled": 137,
-  "wins": 92
+  "losses": 43,
+  "net_usd": -20.72,
+  "settled": 117,
+  "wins": 74
  },
  "site": "https://kidusb9.github.io/kalshi-quant-research/"
 }
