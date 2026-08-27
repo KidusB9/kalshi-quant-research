@@ -1,0 +1,291 @@
+{
+ "date": "2026-08-26",
+ "disclaimer": "Not financial advice. Past results are no guarantee of future results. Published automatically without human review.",
+ "equity": {
+  "change": -44.97,
+  "current": 332.32,
+  "days": 36,
+  "first": 377.29,
+  "series": [
+   {
+    "date": "2026-07-13",
+    "equity": 377.29
+   },
+   {
+    "date": "2026-07-14",
+    "equity": 423.92
+   },
+   {
+    "date": "2026-07-15",
+    "equity": 376.03
+   },
+   {
+    "date": "2026-07-16",
+    "equity": 371.81
+   },
+   {
+    "date": "2026-07-17",
+    "equity": 366.2
+   },
+   {
+    "date": "2026-07-18",
+    "equity": 348.81
+   },
+   {
+    "date": "2026-07-19",
+    "equity": 342.66
+   },
+   {
+    "date": "2026-07-20",
+    "equity": 338.27
+   },
+   {
+    "date": "2026-07-21",
+    "equity": 341.41
+   },
+   {
+    "date": "2026-07-22",
+    "equity": 338.75
+   },
+   {
+    "date": "2026-07-23",
+    "equity": 338.24
+   },
+   {
+    "date": "2026-07-24",
+    "equity": 336.98
+   },
+   {
+    "date": "2026-07-25",
+    "equity": 334.64
+   },
+   {
+    "date": "2026-07-26",
+    "equity": 320.36
+   },
+   {
+    "date": "2026-07-27",
+    "equity": 320.3
+   },
+   {
+    "date": "2026-07-28",
+    "equity": 320.09
+   },
+   {
+    "date": "2026-07-29",
+    "equity": 320.74
+   },
+   {
+    "date": "2026-07-30",
+    "equity": 321.55
+   },
+   {
+    "date": "2026-07-31",
+    "equity": 320.93
+   },
+   {
+    "date": "2026-08-01",
+    "equity": 324.26
+   },
+   {
+    "date": "2026-08-02",
+    "equity": 326.47
+   },
+   {
+    "date": "2026-08-03",
+    "equity": 328.26
+   },
+   {
+    "date": "2026-08-04",
+    "equity": 329.13
+   },
+   {
+    "date": "2026-08-05",
+    "equity": 327.75
+   },
+   {
+    "date": "2026-08-06",
+    "equity": 329.6
+   },
+   {
+    "date": "2026-08-07",
+    "equity": 328.82
+   },
+   {
+    "date": "2026-08-08",
+    "equity": 329.71
+   },
+   {
+    "date": "2026-08-09",
+    "equity": 331.81
+   },
+   {
+    "date": "2026-08-10",
+    "equity": 331.54
+   },
+   {
+    "date": "2026-08-12",
+    "equity": 331.29
+   },
+   {
+    "date": "2026-08-13",
+    "equity": 330.24
+   },
+   {
+    "date": "2026-08-22",
+    "equity": 332.21
+   },
+   {
+    "date": "2026-08-23",
+    "equity": 332.13
+   },
+   {
+    "date": "2026-08-24",
+    "equity": 330.85
+   },
+   {
+    "date": "2026-08-25",
+    "equity": 332.57
+   },
+   {
+    "date": "2026-08-26",
+    "equity": 332.32
+   }
+  ]
+ },
+ "forecast_scores": {
+  "analyst": {
+   "beats_market": false,
+   "brier": 0.194764,
+   "label": "Language model",
+   "market_brier": 0.091158,
+   "n": 2438
+  },
+  "model_desk": {
+   "beats_market": false,
+   "brier": 0.233561,
+   "label": "Live shadow book",
+   "market_brier": 0.151913,
+   "n": 1232
+  },
+  "pricer": {
+   "beats_market": false,
+   "brier": 0.04638,
+   "label": "Trained pricer",
+   "market_brier": 0.04281,
+   "n": 852937
+  }
+ },
+ "generated_at": "2026-08-27T03:20:48+00:00",
+ "open_positions": 7,
+ "risk_snapshots": 955,
+ "schema": 1,
+ "settled_by_series": [
+  {
+   "engine": "snipe",
+   "losses": 2,
+   "net_usd": 30.0,
+   "series": "KXWIN",
+   "settled": 20,
+   "status": "promoted",
+   "wins": 18
+  },
+  {
+   "engine": "convergence",
+   "losses": 0,
+   "net_usd": 5.87,
+   "series": "KXUFCFIGHT",
+   "settled": 6,
+   "status": "promoted",
+   "wins": 6
+  },
+  {
+   "engine": "convergence",
+   "losses": 1,
+   "net_usd": 3.36,
+   "series": "KXUCLGAME",
+   "settled": 5,
+   "status": "promoted",
+   "wins": 4
+  },
+  {
+   "engine": "convergence",
+   "losses": 2,
+   "net_usd": 1.84,
+   "series": "KXWNBATOTAL",
+   "settled": 16,
+   "status": "promoted",
+   "wins": 14
+  },
+  {
+   "engine": "convergence",
+   "losses": 3,
+   "net_usd": -0.22,
+   "series": "KXATPMATCH",
+   "settled": 10,
+   "status": "benched",
+   "wins": 7
+  },
+  {
+   "engine": "convergence",
+   "losses": 3,
+   "net_usd": -0.49,
+   "series": "KXMLBTOTAL",
+   "settled": 11,
+   "status": "benched",
+   "wins": 8
+  },
+  {
+   "engine": "convergence",
+   "losses": 6,
+   "net_usd": -0.94,
+   "series": "KXATPCHALLENGERMATCH",
+   "settled": 22,
+   "status": "benched",
+   "wins": 16
+  },
+  {
+   "engine": "convergence",
+   "losses": 3,
+   "net_usd": -1.95,
+   "series": "KXWTAMATCH",
+   "settled": 14,
+   "status": "benched",
+   "wins": 11
+  },
+  {
+   "engine": "convergence",
+   "losses": 4,
+   "net_usd": -2.81,
+   "series": "KXWTACHALLENGERMATCH",
+   "settled": 10,
+   "status": "benched",
+   "wins": 6
+  },
+  {
+   "engine": "birth",
+   "losses": 11,
+   "net_usd": -6.78,
+   "series": "KXTEMPDCH",
+   "settled": 11,
+   "status": "benched",
+   "wins": 0
+  },
+  {
+   "engine": "model",
+   "losses": 10,
+   "net_usd": -18.6,
+   "series": "KXWCTOTAL",
+   "settled": 12,
+   "status": "benched",
+   "wins": 2
+  }
+ ],
+ "settled_totals": {
+  "losses": 45,
+  "net_usd": 9.28,
+  "settled": 137,
+  "wins": 92
+ },
+ "site": "https://kidusb9.github.io/kalshi-quant-research/"
+}
