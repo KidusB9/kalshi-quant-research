@@ -201,10 +201,10 @@
  "forecast_scores": {
   "analyst": {
    "beats_market": false,
-   "brier": 0.185289,
+   "brier": 0.185205,
    "label": "Language model",
-   "market_brier": 0.085001,
-   "n": 4095
+   "market_brier": 0.085035,
+   "n": 4100
   },
   "model_desk": {
    "beats_market": false,
@@ -221,7 +221,7 @@
    "n": 852937
   }
  },
- "generated_at": "2026-09-07T00:03:18+00:00",
+ "generated_at": "2026-09-07T00:20:02+00:00",
  "last_mark": "2026-09-06",
  "open_positions": 10,
  "risk_snapshots": 1442,
