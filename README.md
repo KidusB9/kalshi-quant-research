@@ -65,13 +65,18 @@ flowchart TB
 
 ## By the numbers
 
+Counts move daily. These are as of **2026-09-06**, and the live values for the
+scored columns are in [`record.json`](record.json), which is republished with the
+page every day; where this table and that file disagree, the file is right.
+
 | Metric | Value |
 |---|---|
 | Execution engines | 40+ async engines under one scheduler |
 | Settled-outcome data lake | 3.7 GB, 5.5M+ markets, refreshed daily |
-| Settlement-scored shadow trades | 591 |
-| Scored LLM forecasts | 1,447 |
-| Versioned model generations | 14, with per-category Brier scores |
+| Settlement-scored shadow predictions | 1,825 |
+| Scored LLM forecasts | 4,106 |
+| Model-priced markets scored against the closing price | 852,937 |
+| Versioned pricer generations | 7, with per-category Brier scores |
 | Codebase | roughly 58k lines of Python, 1,400+ tests |
 
 ## How capital is governed
@@ -112,7 +117,7 @@ same statistical gates the live engines passed.
 |---|---|
 | **Data lake and training** | A 3.7 GB settled-outcome lake (5.5M+ markets, daily targeted backfill). Walk-forward training is gated on beating the market's own out-of-sample Brier score. A model that cannot out-predict the closing price does not ship. |
 | **Pricing service** | Re-prices the tradeable venue against the current model every 15 minutes and logs net-of-fee edges. |
-| **Model and analyst desks** | A shadow book. An ML model desk and an LLM analyst desk (Gemini to DeepSeek to OpenRouter failover, signal-only) log predictions that are then settlement-scored against real outcomes: 591 scored shadow trades and 1,447 scored forecasts to date. |
+| **Model and analyst desks** | A shadow book. An ML model desk and an LLM analyst desk (Gemini to DeepSeek to OpenRouter failover, signal-only) log predictions that are then settlement-scored against real outcomes: 1,825 scored shadow predictions and 4,106 scored forecasts as of 2026-09-06. |
 
 At current sample sizes the ML brain has not earned a live seat, and the system
 says so on its own scoreboard rather than assuming otherwise.
@@ -156,12 +161,22 @@ selection, and a confidence interval, not when it looks good on a chart.
 ## Results and honest limitations
 
 This is presented as an engineering and research showcase, and that is what it is.
-Operated at small personal capital, net realized trading P&L is roughly
-break-even by design. The objective was the risk architecture, the evidence
-discipline, and the research machinery, not returns on a few hundred dollars. The
-binding constraint on this venue is opportunity and order-book depth, not capital
-or code, and the same architecture is what would let a proven edge scale if and
-when capital and opportunity allow. Nothing here claims a profit it did not make.
+
+**It has not made money.** Across 117 settled markets in 10 series the system is
+**net -$20.72** after fees, and the account is down **-$42.91** over 47 daily
+marks. Split the settled figure and it says something more useful than the total:
+the engines still running are **+$4.66**, and the experiments that were shut off
+cost **-$25.38**. Every one of those numbers is dated, regenerated daily, and
+published beside this file in [`record.json`](record.json); the ones above are
+as of 2026-09-06 and the file is authoritative.
+
+The objective was the risk architecture, the evidence discipline, and the
+research machinery, not returns on a few hundred dollars. The binding constraint
+on this venue is opportunity and order-book depth rather than capital or code,
+and the same architecture is what would let a proven edge scale if and when both
+allow. No model in the research layer has beaten the market's own Brier score
+yet, so none of them has earned a live seat. Nothing here claims a profit it did
+not make.
 
 ## Disclaimer
 
