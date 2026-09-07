@@ -201,17 +201,17 @@
  "forecast_scores": {
   "analyst": {
    "beats_market": false,
-   "brier": 0.185205,
+   "brier": 0.185403,
    "label": "Language model",
-   "market_brier": 0.085035,
-   "n": 4100
+   "market_brier": 0.085333,
+   "n": 4106
   },
   "model_desk": {
    "beats_market": false,
-   "brier": 0.257337,
+   "brier": 0.257692,
    "label": "Live shadow book",
-   "market_brier": 0.16265,
-   "n": 1817
+   "market_brier": 0.162727,
+   "n": 1825
   },
   "pricer": {
    "beats_market": false,
@@ -221,10 +221,10 @@
    "n": 852937
   }
  },
- "generated_at": "2026-09-07T00:20:02+00:00",
+ "generated_at": "2026-09-07T04:08:45+00:00",
  "last_mark": "2026-09-06",
  "open_positions": 10,
- "risk_snapshots": 1442,
+ "risk_snapshots": 1450,
  "schema": 2,
  "settled_by_series": [
   {

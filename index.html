@@ -1,6 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
 <title>Verified Trading Record</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="The unedited daily record of my live prediction-market trading operation: equity, settled results by market, and the forecasts that failed.">
+<link rel="canonical" href="https://kidusb9.github.io/kalshi-quant-research/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kidus Berhanu">
+<meta property="og:title" content="Verified Trading Record">
+<meta property="og:description" content="The unedited daily record of my live prediction-market trading operation: equity, settled results by market, and the forecasts that failed.">
+<meta property="og:url" content="https://kidusb9.github.io/kalshi-quant-research/">
+<meta property="og:image" content="https://kidusb9.github.io/kalshi-quant-research/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Verified Trading Record">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 :root{color-scheme:light;
 --paper:#fbfaf7;--card:#ffffff;--ink:#1b1a17;--body:#33322e;--muted:#6f6c64;
@@ -101,6 +116,8 @@ section{padding-top:40px}
 .narrow{display:block}
 }
 </style>
+</head>
+<body>
 <div class="rule-top"></div><div class="wrap">
 <header>
 <p class="eyebrow">Verified record / updated daily</p>
@@ -128,8 +145,8 @@ section{padding-top:40px}
 <p class="kicker">Chart four</p>
 <h2>Can it forecast better than the price?</h2>
 <p>Every forecast this system makes is scored against what actually happened, next to the market price at the same moment. The measure is the Brier score, which is just the squared distance between the forecast and the truth. Lower is better. Beating the market price is the entire game, because the price is free and available to everyone.</p>
-<div class="panel wide"><svg class="chart" viewBox="0 0 720 236" role="img" aria-label="Brier score against the market, lower is better" preserveAspectRatio="xMidYMid meet"><text class="ax" x="0" y="12">FORECASTER</text><text class="ax" x="204" y="12">BRIER SCORE, LOWER IS BETTER</text><line x1="0" y1="18" x2="720" y2="18" stroke="#e6e2d8" stroke-width="1"/><text class="name" x="0" y="44">Trained pricer</text><text class="sub" x="0" y="61">852,937 settled markets, holdout</text><rect x="204" y="32" width="59.5" height="14" rx="2" fill="#b4552d"/><text class="sub" x="273.5" y="43.0">0.0464 this system</text><rect x="204" y="54" width="54.9" height="14" rx="2" fill="#9a9384"/><text class="sub" x="268.9" y="65.0">0.0428 market price</text><text class="name" x="0" y="110">Live shadow book</text><text class="sub" x="0" y="127">1,817 forecasts scored vs settlement</text><rect x="204" y="98" width="330.0" height="14" rx="2" fill="#b4552d"/><text class="sub" x="544.0" y="109.0">0.2573 this system</text><rect x="204" y="120" width="208.6" height="14" rx="2" fill="#9a9384"/><text class="sub" x="422.6" y="131.0">0.1626 market price</text><text class="name" x="0" y="176">Language model</text><text class="sub" x="0" y="193">4,100 forecasts scored vs settlement</text><rect x="204" y="164" width="237.5" height="14" rx="2" fill="#b4552d"/><text class="sub" x="451.5" y="175.0">0.1852 this system</text><rect x="204" y="186" width="109.0" height="14" rx="2" fill="#9a9384"/><text class="sub" x="323.0" y="197.0">0.0850 market price</text></svg></div><div class="panel narrow"><svg class="chart" viewBox="0 0 380 314" role="img" aria-label="Brier score against the market, lower is better" preserveAspectRatio="xMidYMid meet"><text class="ax" x="380" y="12" text-anchor="end">BRIER SCORE, LOWER IS BETTER</text><line x1="0" y1="16" x2="380" y2="16" stroke="#e6e2d8" stroke-width="1"/><text class="name" x="0" y="42">Trained pricer</text><text class="sub" x="0" y="59">852,937 settled markets, holdout</text><rect x="0" y="68" width="27.0" height="14" rx="2" fill="#b4552d"/><text class="sub" x="160.0" y="79.0">0.0464 this system</text><rect x="0" y="90" width="25.0" height="14" rx="2" fill="#9a9384"/><text class="sub" x="160.0" y="101.0">0.0428 market price</text><text class="name" x="0" y="136">Live shadow book</text><text class="sub" x="0" y="153">1,817 forecasts scored vs settlement</text><rect x="0" y="162" width="150.0" height="14" rx="2" fill="#b4552d"/><text class="sub" x="160.0" y="173.0">0.2573 this system</text><rect x="0" y="184" width="94.8" height="14" rx="2" fill="#9a9384"/><text class="sub" x="160.0" y="195.0">0.1626 market price</text><text class="name" x="0" y="230">Language model</text><text class="sub" x="0" y="247">4,100 forecasts scored vs settlement</text><rect x="0" y="256" width="108.0" height="14" rx="2" fill="#b4552d"/><text class="sub" x="160.0" y="267.0">0.1852 this system</text><rect x="0" y="278" width="49.6" height="14" rx="2" fill="#9a9384"/><text class="sub" x="160.0" y="289.0">0.0850 market price</text></svg></div>
-<p>So far the answer is no. On every desk measured, the market price is the better forecast. That result is published here at the same size as anything else. The live shadow book has scored 1,817 forecasts against settlement.</p>
+<div class="panel wide"><svg class="chart" viewBox="0 0 720 236" role="img" aria-label="Brier score against the market, lower is better" preserveAspectRatio="xMidYMid meet"><text class="ax" x="0" y="12">FORECASTER</text><text class="ax" x="204" y="12">BRIER SCORE, LOWER IS BETTER</text><line x1="0" y1="18" x2="720" y2="18" stroke="#e6e2d8" stroke-width="1"/><text class="name" x="0" y="44">Trained pricer</text><text class="sub" x="0" y="61">852,937 settled markets, holdout</text><rect x="204" y="32" width="59.4" height="14" rx="2" fill="#b4552d"/><text class="sub" x="273.4" y="43.0">0.0464 this system</text><rect x="204" y="54" width="54.8" height="14" rx="2" fill="#9a9384"/><text class="sub" x="268.8" y="65.0">0.0428 market price</text><text class="name" x="0" y="110">Live shadow book</text><text class="sub" x="0" y="127">1,825 forecasts scored vs settlement</text><rect x="204" y="98" width="330.0" height="14" rx="2" fill="#b4552d"/><text class="sub" x="544.0" y="109.0">0.2577 this system</text><rect x="204" y="120" width="208.4" height="14" rx="2" fill="#9a9384"/><text class="sub" x="422.4" y="131.0">0.1627 market price</text><text class="name" x="0" y="176">Language model</text><text class="sub" x="0" y="193">4,106 forecasts scored vs settlement</text><rect x="204" y="164" width="237.4" height="14" rx="2" fill="#b4552d"/><text class="sub" x="451.4" y="175.0">0.1854 this system</text><rect x="204" y="186" width="109.3" height="14" rx="2" fill="#9a9384"/><text class="sub" x="323.3" y="197.0">0.0853 market price</text></svg></div><div class="panel narrow"><svg class="chart" viewBox="0 0 380 314" role="img" aria-label="Brier score against the market, lower is better" preserveAspectRatio="xMidYMid meet"><text class="ax" x="380" y="12" text-anchor="end">BRIER SCORE, LOWER IS BETTER</text><line x1="0" y1="16" x2="380" y2="16" stroke="#e6e2d8" stroke-width="1"/><text class="name" x="0" y="42">Trained pricer</text><text class="sub" x="0" y="59">852,937 settled markets, holdout</text><rect x="0" y="68" width="27.0" height="14" rx="2" fill="#b4552d"/><text class="sub" x="160.0" y="79.0">0.0464 this system</text><rect x="0" y="90" width="24.9" height="14" rx="2" fill="#9a9384"/><text class="sub" x="160.0" y="101.0">0.0428 market price</text><text class="name" x="0" y="136">Live shadow book</text><text class="sub" x="0" y="153">1,825 forecasts scored vs settlement</text><rect x="0" y="162" width="150.0" height="14" rx="2" fill="#b4552d"/><text class="sub" x="160.0" y="173.0">0.2577 this system</text><rect x="0" y="184" width="94.7" height="14" rx="2" fill="#9a9384"/><text class="sub" x="160.0" y="195.0">0.1627 market price</text><text class="name" x="0" y="230">Language model</text><text class="sub" x="0" y="247">4,106 forecasts scored vs settlement</text><rect x="0" y="256" width="107.9" height="14" rx="2" fill="#b4552d"/><text class="sub" x="160.0" y="267.0">0.1854 this system</text><rect x="0" y="278" width="49.7" height="14" rx="2" fill="#9a9384"/><text class="sub" x="160.0" y="289.0">0.0853 market price</text></svg></div>
+<p>So far the answer is no. On every desk measured, the market price is the better forecast. That result is published here at the same size as anything else. The live shadow book has scored 1,825 forecasts against settlement.</p>
 </section>
 <section>
 <p class="kicker">The graveyard</p>
@@ -153,7 +170,7 @@ section{padding-top:40px}
 <li><strong>The numbers come straight from my ledgers.</strong> Equity is the end-of-day mark recorded at the time. The settled records come from my risk system, which reads filled orders. Nothing here is reconstructed after the fact or recomputed from a nicer angle.</li>
 <li><strong>This page posts every day, win or lose.</strong> Same time, fixed routine, no exceptions. A bad day cannot be held back, softened, or delayed into a good one; it prints next to the good ones and stays there.</li>
 </ol>
-<p>Behind this page right now: 1,442 portfolio risk snapshots, 10 positions open at the last mark, 47 daily equity marks.</p>
+<p>Behind this page right now: 1,450 portfolio risk snapshots, 10 positions open at the last mark, 47 daily equity marks.</p>
 <p>What is deliberately not here: entry rules, position sizing, risk limits, or anything else that would let a reader copy the system rather than check it. Results are public. The machinery is not.</p>
 </section>
 <footer>
@@ -161,3 +178,5 @@ section{padding-top:40px}
 <p class="fine">Past results are no guarantee of future results. Prediction markets and event contracts can lose the entire amount committed to a position. Sample sizes on this page are small, most of the measured strategies lost money, and no edge over market prices has been demonstrated. Numbers come straight from my internal ledgers and may contain errors. Nothing here has been audited by a third party.</p>
 <p class="fine">Every update to this page is a timestamped commit. Source of record: <a href="https://github.com/KidusB9/kalshi-quant-research/commits/main">the commit history</a>.</p>
 </footer></div>
+</body>
+</html>
