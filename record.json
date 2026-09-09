@@ -1,11 +1,11 @@
 {
- "data_age_days": 1,
+ "data_age_days": 0,
  "date": "2026-09-08",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
-  "change": -43.59,
-  "current": 333.7,
-  "days": 48,
+  "change": -43.76,
+  "current": 333.53,
+  "days": 49,
   "first": 377.29,
   "series": [
    {
@@ -199,6 +199,10 @@
    {
     "date": "2026-09-07",
     "equity": 333.7
+   },
+   {
+    "date": "2026-09-08",
+    "equity": 333.53
    }
   ]
  },
@@ -225,7 +229,7 @@
    "n": 852937
   }
  },
- "generated_at": "2026-09-09T00:20:03+00:00",
+ "generated_at": "2026-09-09T04:47:58+00:00",
  "headline": {
   "engines_running": 8.22,
   "experiments_stopped": -25.38,
@@ -235,7 +239,7 @@
   ],
   "system_30d": 1.18
  },
- "last_mark": "2026-09-07",
+ "last_mark": "2026-09-08",
  "open_positions": 10,
  "risk_snapshots": 1509,
  "schema": 2,
