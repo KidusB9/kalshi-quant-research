@@ -1,6 +1,6 @@
 {
- "data_age_days": 1,
- "date": "2026-09-09",
+ "data_age_days": 3,
+ "date": "2026-09-11",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
   "change": -43.76,
@@ -209,17 +209,17 @@
  "forecast_scores": {
   "analyst": {
    "beats_market": false,
-   "brier": 0.180966,
+   "brier": 0.181069,
    "label": "Language model",
-   "market_brier": 0.084709,
-   "n": 4397
+   "market_brier": 0.085088,
+   "n": 4405
   },
   "model_desk": {
    "beats_market": false,
-   "brier": 0.255559,
+   "brier": 0.256624,
    "label": "Live shadow book",
-   "market_brier": 0.161917,
-   "n": 1966
+   "market_brier": 0.162462,
+   "n": 2004
   },
   "pricer": {
    "beats_market": false,
@@ -229,9 +229,9 @@
    "n": 852937
   }
  },
- "generated_at": "2026-09-10T00:28:11+00:00",
+ "generated_at": "2026-09-11T17:25:42+00:00",
  "headline": {
-  "engines_running": 8.22,
+  "engines_running": 9.02,
   "experiments_stopped": -25.38,
   "retired_series": [
    "KXTEMPDCH",
@@ -241,7 +241,7 @@
  },
  "last_mark": "2026-09-08",
  "open_positions": 10,
- "risk_snapshots": 1531,
+ "risk_snapshots": 1546,
  "schema": 2,
  "settled_by_series": [
   {
@@ -255,14 +255,14 @@
    "wins": 8
   },
   {
-   "as_of": "2026-09-06",
+   "as_of": "2026-09-10",
    "engine": "convergence",
    "losses": 1,
-   "net_usd": 3.36,
+   "net_usd": 4.16,
    "series": "KXUCLGAME",
-   "settled": 5,
+   "settled": 6,
    "status": "promoted",
-   "wins": 4
+   "wins": 5
   },
   {
    "as_of": "2026-09-06",
@@ -346,11 +346,11 @@
   }
  ],
  "settled_totals": {
-  "as_of": "2026-09-06",
+  "as_of": "2026-09-10",
   "losses": 44,
-  "net_usd": -17.16,
-  "settled": 123,
-  "wins": 79
+  "net_usd": -16.36,
+  "settled": 124,
+  "wins": 80
  },
  "site": "https://kidusb9.github.io/kalshi-quant-research/"
 }
