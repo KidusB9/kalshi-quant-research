@@ -1,11 +1,11 @@
 {
- "data_age_days": 3,
- "date": "2026-09-11",
+ "data_age_days": 0,
+ "date": "2026-09-12",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
-  "change": -43.76,
-  "current": 333.53,
-  "days": 49,
+  "change": -41.08,
+  "current": 336.21,
+  "days": 50,
   "first": 377.29,
   "series": [
    {
@@ -203,23 +203,27 @@
    {
     "date": "2026-09-08",
     "equity": 333.53
+   },
+   {
+    "date": "2026-09-12",
+    "equity": 336.21
    }
   ]
  },
  "forecast_scores": {
   "analyst": {
    "beats_market": false,
-   "brier": 0.181069,
+   "brier": 0.180718,
    "label": "Language model",
-   "market_brier": 0.085088,
-   "n": 4405
+   "market_brier": 0.085008,
+   "n": 4436
   },
   "model_desk": {
    "beats_market": false,
-   "brier": 0.256624,
+   "brier": 0.258329,
    "label": "Live shadow book",
-   "market_brier": 0.162462,
-   "n": 2004
+   "market_brier": 0.161968,
+   "n": 2092
   },
   "pricer": {
    "beats_market": false,
@@ -229,19 +233,19 @@
    "n": 852937
   }
  },
- "generated_at": "2026-09-11T17:26:59+00:00",
+ "generated_at": "2026-09-13T00:02:37+00:00",
  "headline": {
-  "engines_running": 9.02,
+  "engines_running": 10.55,
   "experiments_stopped": -25.38,
   "retired_series": [
    "KXTEMPDCH",
    "KXWCTOTAL"
   ],
-  "system_30d": 1.18
+  "system_30d": 3.51
  },
- "last_mark": "2026-09-08",
- "open_positions": 10,
- "risk_snapshots": 1546,
+ "last_mark": "2026-09-12",
+ "open_positions": 6,
+ "risk_snapshots": 1563,
  "schema": 2,
  "settled_by_series": [
   {
@@ -255,14 +259,14 @@
    "wins": 8
   },
   {
-   "as_of": "2026-09-10",
+   "as_of": "2026-09-12",
    "engine": "convergence",
    "losses": 1,
-   "net_usd": 4.16,
+   "net_usd": 5.69,
    "series": "KXUCLGAME",
-   "settled": 6,
+   "settled": 8,
    "status": "promoted",
-   "wins": 5
+   "wins": 7
   },
   {
    "as_of": "2026-09-06",
@@ -346,11 +350,11 @@
   }
  ],
  "settled_totals": {
-  "as_of": "2026-09-10",
+  "as_of": "2026-09-12",
   "losses": 44,
-  "net_usd": -16.36,
-  "settled": 124,
-  "wins": 80
+  "net_usd": -14.83,
+  "settled": 126,
+  "wins": 82
  },
  "site": "https://kidusb9.github.io/kalshi-quant-research/"
 }
