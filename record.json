@@ -1,6 +1,6 @@
 {
- "data_age_days": 0,
- "date": "2026-09-16",
+ "data_age_days": 2,
+ "date": "2026-09-18",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
   "change": -41.49,
@@ -229,17 +229,17 @@
  "forecast_scores": {
   "analyst": {
    "beats_market": false,
-   "brier": 0.179142,
+   "brier": 0.17831,
    "label": "Language model",
-   "market_brier": 0.083475,
-   "n": 4710
+   "market_brier": 0.083108,
+   "n": 4789
   },
   "model_desk": {
    "beats_market": false,
-   "brier": 0.256969,
+   "brier": 0.256079,
    "label": "Live shadow book",
-   "market_brier": 0.162207,
-   "n": 2291
+   "market_brier": 0.162648,
+   "n": 2387
   },
   "pricer": {
    "beats_market": false,
@@ -249,7 +249,7 @@
    "n": 852937
   }
  },
- "generated_at": "2026-09-17T01:01:17+00:00",
+ "generated_at": "2026-09-19T05:52:59+00:00",
  "headline": {
   "engines_running": 10.55,
   "experiments_stopped": -25.38,
@@ -261,7 +261,7 @@
  },
  "last_mark": "2026-09-16",
  "open_positions": 4,
- "risk_snapshots": 1705,
+ "risk_snapshots": 1733,
  "schema": 2,
  "settled_by_series": [
   {
