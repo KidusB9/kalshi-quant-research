@@ -1,6 +1,6 @@
 {
- "data_age_days": 4,
- "date": "2026-09-20",
+ "data_age_days": 8,
+ "date": "2026-09-24",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
   "change": -41.49,
@@ -249,7 +249,7 @@
    "n": 852937
   }
  },
- "generated_at": "2026-09-21T05:38:17+00:00",
+ "generated_at": "2026-09-25T01:11:47+00:00",
  "headline": {
   "engines_running": 10.55,
   "experiments_stopped": -25.38,
