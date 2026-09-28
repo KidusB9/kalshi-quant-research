@@ -237,10 +237,10 @@
  "forecast_scores": {
   "analyst": {
    "beats_market": false,
-   "brier": 0.178239,
+   "brier": 0.178267,
    "label": "Language model",
-   "market_brier": 0.084286,
-   "n": 4880
+   "market_brier": 0.08437,
+   "n": 4886
   },
   "model_desk": {
    "beats_market": false,
@@ -257,7 +257,7 @@
    "n": 852937
   }
  },
- "generated_at": "2026-09-28T00:02:55+00:00",
+ "generated_at": "2026-09-28T00:20:03+00:00",
  "headline": {
   "engines_running": 10.55,
   "experiments_stopped": -25.38,
