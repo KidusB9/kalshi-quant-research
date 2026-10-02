@@ -1,11 +1,11 @@
 {
  "data_age_days": 0,
- "date": "2026-09-30",
+ "date": "2026-10-01",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
-  "change": -41.94,
-  "current": 335.35,
-  "days": 59,
+  "change": -40.88,
+  "current": 336.41,
+  "days": 60,
   "first": 377.29,
   "series": [
    {
@@ -243,23 +243,27 @@
    {
     "date": "2026-09-30",
     "equity": 335.35
+   },
+   {
+    "date": "2026-10-01",
+    "equity": 336.41
    }
   ]
  },
  "forecast_scores": {
   "analyst": {
    "beats_market": false,
-   "brier": 0.175806,
+   "brier": 0.180927,
    "label": "Language model",
-   "market_brier": 0.084754,
-   "n": 5157
+   "market_brier": 0.082975,
+   "n": 5301
   },
   "model_desk": {
    "beats_market": false,
-   "brier": 0.257222,
+   "brier": 0.255401,
    "label": "Live shadow book",
-   "market_brier": 0.165147,
-   "n": 2586
+   "market_brier": 0.164811,
+   "n": 2671
   },
   "pricer": {
    "beats_market": false,
@@ -269,7 +273,7 @@
    "n": 852937
   }
  },
- "generated_at": "2026-10-01T00:20:02+00:00",
+ "generated_at": "2026-10-02T00:02:23+00:00",
  "headline": {
   "engines_running": 10.55,
   "experiments_stopped": -25.38,
@@ -277,11 +281,11 @@
    "KXTEMPDCH",
    "KXWCTOTAL"
   ],
-  "system_30d": 3.51
+  "system_30d": 4.5
  },
- "last_mark": "2026-09-30",
- "open_positions": 6,
- "risk_snapshots": 1892,
+ "last_mark": "2026-10-01",
+ "open_positions": 5,
+ "risk_snapshots": 1937,
  "schema": 2,
  "settled_by_series": [
   {
