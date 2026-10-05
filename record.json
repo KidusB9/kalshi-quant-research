@@ -1,11 +1,11 @@
 {
  "data_age_days": 0,
- "date": "2026-10-03",
+ "date": "2026-10-04",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
-  "change": -36.06,
-  "current": 341.23,
-  "days": 62,
+  "change": -35.03,
+  "current": 342.26,
+  "days": 63,
   "first": 377.29,
   "series": [
    {
@@ -255,16 +255,20 @@
    {
     "date": "2026-10-03",
     "equity": 341.23
+   },
+   {
+    "date": "2026-10-04",
+    "equity": 342.26
    }
   ]
  },
  "forecast_scores": {
   "analyst": {
    "beats_market": false,
-   "brier": 0.178822,
+   "brier": 0.179305,
    "label": "Language model",
-   "market_brier": 0.081938,
-   "n": 5567
+   "market_brier": 0.082319,
+   "n": 5690
   },
   "model_desk": {
    "beats_market": false,
@@ -281,30 +285,30 @@
    "n": 852937
   }
  },
- "generated_at": "2026-10-04T00:20:03+00:00",
+ "generated_at": "2026-10-05T00:00:53+00:00",
  "headline": {
-  "engines_running": 10.55,
+  "engines_running": 11.37,
   "experiments_stopped": -25.38,
   "retired_series": [
    "KXTEMPDCH",
    "KXWCTOTAL"
   ],
-  "system_30d": 8.59
+  "system_30d": 8.46
  },
- "last_mark": "2026-10-03",
- "open_positions": 2,
- "risk_snapshots": 2027,
+ "last_mark": "2026-10-04",
+ "open_positions": 1,
+ "risk_snapshots": 2072,
  "schema": 2,
  "settled_by_series": [
   {
-   "as_of": "2026-09-06",
+   "as_of": "2026-10-03",
    "engine": "convergence",
    "losses": 0,
-   "net_usd": 7.57,
+   "net_usd": 8.39,
    "series": "KXUFCFIGHT",
-   "settled": 8,
+   "settled": 9,
    "status": "promoted",
-   "wins": 8
+   "wins": 9
   },
   {
    "as_of": "2026-09-12",
@@ -398,11 +402,11 @@
   }
  ],
  "settled_totals": {
-  "as_of": "2026-09-12",
+  "as_of": "2026-10-03",
   "losses": 44,
-  "net_usd": -14.83,
-  "settled": 126,
-  "wins": 82
+  "net_usd": -14.01,
+  "settled": 127,
+  "wins": 83
  },
  "site": "https://kidusb9.github.io/kalshi-quant-research/"
 }
