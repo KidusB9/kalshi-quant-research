@@ -333,7 +333,7 @@
    "n": 852937
   }
  },
- "generated_at": "2026-10-17T00:20:02+00:00",
+ "generated_at": "2026-10-17T01:29:47+00:00",
  "headline": {
   "engines_running": 11.37,
   "experiments_stopped": -25.38,
@@ -345,7 +345,7 @@
  },
  "last_mark": "2026-10-16",
  "open_positions": 2,
- "risk_snapshots": 2626,
+ "risk_snapshots": 2628,
  "schema": 2,
  "settled_by_series": [
   {
@@ -456,5 +456,164 @@
   "settled": 127,
   "wins": 83
  },
- "site": "https://kidusb9.github.io/kalshi-quant-research/"
+ "site": "https://kidusb9.github.io/kalshi-quant-research/",
+ "trend_systems": {
+  "as_of": "2026-10-16",
+  "available": true,
+  "systems": [
+   {
+    "closed_trades": 6,
+    "live_since": "2026-08-20",
+    "losses": 3,
+    "name": "Crypto trend, spot",
+    "open": [],
+    "pnl_since_start_pct": -0.16,
+    "pnl_since_start_usd": -2.07,
+    "realized_usd": -1.94,
+    "trades": [
+     {
+      "asset": "BTC",
+      "date": "2026-10-14",
+      "pnl_usd": -11.04,
+      "price_usd": 81710.13,
+      "side": "SELL"
+     },
+     {
+      "asset": "BTC",
+      "date": "2026-10-09",
+      "pnl_usd": null,
+      "price_usd": 82596.66842192691,
+      "side": "BUY"
+     },
+     {
+      "asset": "ETH",
+      "date": "2026-10-07",
+      "pnl_usd": -7.32,
+      "price_usd": 2557.51,
+      "side": "SELL"
+     },
+     {
+      "asset": "ETH",
+      "date": "2026-10-03",
+      "pnl_usd": null,
+      "price_usd": 2696.65,
+      "side": "BUY"
+     },
+     {
+      "asset": "BTC",
+      "date": "2026-10-03",
+      "pnl_usd": null,
+      "price_usd": 85052.55,
+      "side": "BUY"
+     },
+     {
+      "asset": "ETH",
+      "date": "2026-10-01",
+      "pnl_usd": 9.41,
+      "price_usd": 2703.06,
+      "side": "SELL"
+     },
+     {
+      "asset": "BTC",
+      "date": "2026-10-01",
+      "pnl_usd": -1.25,
+      "price_usd": 84787.66,
+      "side": "SELL"
+     },
+     {
+      "asset": "BTC",
+      "date": "2026-09-21",
+      "pnl_usd": null,
+      "price_usd": 85553.97,
+      "side": "BUY"
+     },
+     {
+      "asset": "ETH",
+      "date": "2026-09-12",
+      "pnl_usd": null,
+      "price_usd": 2530.1,
+      "side": "BUY"
+     },
+     {
+      "asset": "BTC",
+      "date": "2026-09-10",
+      "pnl_usd": 2.16,
+      "price_usd": 76806.56545454546,
+      "side": "SELL"
+     },
+     {
+      "asset": "ETH",
+      "date": "2026-09-05",
+      "pnl_usd": 6.1,
+      "price_usd": 2479.45,
+      "side": "SELL"
+     },
+     {
+      "asset": "ETH",
+      "date": "2026-08-20",
+      "pnl_usd": null,
+      "price_usd": 2370.89,
+      "side": "BUY"
+     }
+    ],
+    "venue": "a US spot crypto exchange",
+    "wins": 3
+   },
+   {
+    "closed_trades": 1,
+    "live_since": "2026-10-11",
+    "losses": 1,
+    "name": "Crypto trend, 2x futures",
+    "open": [],
+    "pnl_since_start_pct": -1.59,
+    "pnl_since_start_usd": -15.88,
+    "realized_usd": -14.97,
+    "trades": [
+     {
+      "asset": "BTC",
+      "date": "2026-10-14",
+      "pnl_usd": -14.97,
+      "price_usd": 81620.0,
+      "side": "SELL"
+     },
+     {
+      "asset": "BTC",
+      "date": "2026-10-10",
+      "pnl_usd": null,
+      "price_usd": 82930.0,
+      "side": "BUY"
+     }
+    ],
+    "venue": "Coinbase Financial Markets",
+    "wins": 0
+   },
+   {
+    "closed_trades": 0,
+    "live_since": "2026-10-11",
+    "losses": 0,
+    "name": "Nasdaq trend, 2x fund",
+    "open": [
+     {
+      "asset": "QLD",
+      "unrealized_usd": -37.69
+     }
+    ],
+    "pnl_since_start_pct": -7.54,
+    "pnl_since_start_usd": -37.69,
+    "realized_usd": 0,
+    "trades": [
+     {
+      "asset": "QLD",
+      "date": "2026-10-14",
+      "pnl_usd": null,
+      "price_usd": 94.95,
+      "side": "BUY"
+     }
+    ],
+    "venue": "Alpaca",
+    "wins": 0
+   }
+  ],
+  "total_since_each_start_usd": -55.64
+ }
 }
