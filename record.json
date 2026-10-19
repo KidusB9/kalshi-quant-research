@@ -1,11 +1,11 @@
 {
  "data_age_days": 0,
- "date": "2026-10-17",
+ "date": "2026-10-18",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
-  "change": -38.57,
-  "current": 338.72,
-  "days": 76,
+  "change": 267.19,
+  "current": 644.48,
+  "days": 77,
   "first": 377.29,
   "series": [
    {
@@ -311,23 +311,27 @@
    {
     "date": "2026-10-17",
     "equity": 338.72
+   },
+   {
+    "date": "2026-10-18",
+    "equity": 644.48
    }
   ]
  },
  "forecast_scores": {
   "analyst": {
    "beats_market": false,
-   "brier": 0.172474,
+   "brier": 0.17275,
    "label": "Language model",
-   "market_brier": 0.078705,
-   "n": 7162
+   "market_brier": 0.078835,
+   "n": 7213
   },
   "model_desk": {
    "beats_market": false,
-   "brier": 0.250685,
+   "brier": 0.250625,
    "label": "Live shadow book",
-   "market_brier": 0.164768,
-   "n": 3653
+   "market_brier": 0.164802,
+   "n": 3658
   },
   "pricer": {
    "beats_market": false,
@@ -337,7 +341,7 @@
    "n": 852937
   }
  },
- "generated_at": "2026-10-18T00:20:03+00:00",
+ "generated_at": "2026-10-19T00:05:34+00:00",
  "headline": {
   "engines_running": 11.37,
   "experiments_stopped": -25.38,
@@ -347,9 +351,9 @@
   ],
   "system_30d": 0.65
  },
- "last_mark": "2026-10-17",
- "open_positions": 2,
- "risk_snapshots": 2672,
+ "last_mark": "2026-10-18",
+ "open_positions": 7,
+ "risk_snapshots": 2691,
  "schema": 2,
  "settled_by_series": [
   {
@@ -462,7 +466,7 @@
  },
  "site": "https://kidusb9.github.io/kalshi-quant-research/",
  "trend_systems": {
-  "as_of": "2026-10-17",
+  "as_of": "2026-10-18",
   "available": true,
   "systems": [
    {
@@ -472,7 +476,7 @@
     "name": "Crypto trend, spot",
     "open": [],
     "pnl_since_start_pct": -0.08,
-    "pnl_since_start_usd": -1.05,
+    "pnl_since_start_usd": -1.06,
     "realized_usd": -1.94,
     "trades": [
      {
@@ -618,6 +622,6 @@
     "wins": 0
    }
   ],
-  "total_since_each_start_usd": -54.62
+  "total_since_each_start_usd": -54.63
  }
 }
