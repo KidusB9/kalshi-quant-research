@@ -1,11 +1,11 @@
 {
  "data_age_days": 0,
- "date": "2026-10-18",
+ "date": "2026-10-19",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
-  "change": 267.19,
-  "current": 644.48,
-  "days": 77,
+  "change": 765.68,
+  "current": 1142.97,
+  "days": 78,
   "first": 377.29,
   "series": [
    {
@@ -315,23 +315,27 @@
    {
     "date": "2026-10-18",
     "equity": 644.48
+   },
+   {
+    "date": "2026-10-19",
+    "equity": 1142.97
    }
   ]
  },
  "forecast_scores": {
   "analyst": {
    "beats_market": false,
-   "brier": 0.17275,
+   "brier": 0.169468,
    "label": "Language model",
-   "market_brier": 0.078835,
-   "n": 7213
+   "market_brier": 0.077263,
+   "n": 7530
   },
   "model_desk": {
    "beats_market": false,
-   "brier": 0.250625,
+   "brier": 0.249189,
    "label": "Live shadow book",
-   "market_brier": 0.164802,
-   "n": 3658
+   "market_brier": 0.164754,
+   "n": 3815
   },
   "pricer": {
    "beats_market": false,
@@ -341,7 +345,7 @@
    "n": 852937
   }
  },
- "generated_at": "2026-10-19T00:20:02+00:00",
+ "generated_at": "2026-10-20T00:05:10+00:00",
  "headline": {
   "engines_running": 11.37,
   "experiments_stopped": -25.38,
@@ -349,11 +353,11 @@
    "KXTEMPDCH",
    "KXWCTOTAL"
   ],
-  "system_30d": 0.65
+  "system_30d": 1.46
  },
- "last_mark": "2026-10-18",
- "open_positions": 7,
- "risk_snapshots": 2691,
+ "last_mark": "2026-10-19",
+ "open_positions": 100,
+ "risk_snapshots": 2737,
  "schema": 2,
  "settled_by_series": [
   {
@@ -466,7 +470,7 @@
  },
  "site": "https://kidusb9.github.io/kalshi-quant-research/",
  "trend_systems": {
-  "as_of": "2026-10-18",
+  "as_of": "2026-10-19",
   "available": true,
   "systems": [
    {
@@ -603,11 +607,11 @@
     "open": [
      {
       "asset": "QLD",
-      "unrealized_usd": -37.69
+      "unrealized_usd": -26.9
      }
     ],
-    "pnl_since_start_pct": -7.54,
-    "pnl_since_start_usd": -37.69,
+    "pnl_since_start_pct": -5.38,
+    "pnl_since_start_usd": -26.9,
     "realized_usd": 0,
     "trades": [
      {
@@ -622,6 +626,6 @@
     "wins": 0
    }
   ],
-  "total_since_each_start_usd": -54.63
+  "total_since_each_start_usd": -43.84
  }
 }
