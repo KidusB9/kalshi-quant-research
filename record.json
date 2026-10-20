@@ -325,10 +325,10 @@
  "forecast_scores": {
   "analyst": {
    "beats_market": false,
-   "brier": 0.169468,
+   "brier": 0.168764,
    "label": "Language model",
-   "market_brier": 0.077263,
-   "n": 7530
+   "market_brier": 0.077034,
+   "n": 7581
   },
   "model_desk": {
    "beats_market": false,
@@ -345,7 +345,7 @@
    "n": 852937
   }
  },
- "generated_at": "2026-10-20T00:05:10+00:00",
+ "generated_at": "2026-10-20T00:20:02+00:00",
  "headline": {
   "engines_running": 11.37,
   "experiments_stopped": -25.38,
@@ -357,7 +357,7 @@
  },
  "last_mark": "2026-10-19",
  "open_positions": 100,
- "risk_snapshots": 2737,
+ "risk_snapshots": 2738,
  "schema": 2,
  "settled_by_series": [
   {
@@ -479,8 +479,8 @@
     "losses": 3,
     "name": "Crypto trend, spot",
     "open": [],
-    "pnl_since_start_pct": -0.08,
-    "pnl_since_start_usd": -1.06,
+    "pnl_since_start_pct": -0.16,
+    "pnl_since_start_usd": -2.08,
     "realized_usd": -1.94,
     "trades": [
      {
@@ -626,6 +626,6 @@
     "wins": 0
    }
   ],
-  "total_since_each_start_usd": -43.84
+  "total_since_each_start_usd": -44.86
  }
 }
