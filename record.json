@@ -1,11 +1,11 @@
 {
  "data_age_days": 0,
- "date": "2026-10-21",
+ "date": "2026-10-22",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
-  "change": 764.31,
-  "current": 1141.6,
-  "days": 80,
+  "change": 828.29,
+  "current": 1205.58,
+  "days": 81,
   "first": 377.29,
   "series": [
    {
@@ -327,23 +327,27 @@
    {
     "date": "2026-10-21",
     "equity": 1141.6
+   },
+   {
+    "date": "2026-10-22",
+    "equity": 1205.58
    }
   ]
  },
  "forecast_scores": {
   "analyst": {
    "beats_market": false,
-   "brier": 0.168049,
+   "brier": 0.166592,
    "label": "Language model",
-   "market_brier": 0.076243,
-   "n": 7780
+   "market_brier": 0.075791,
+   "n": 7938
   },
   "model_desk": {
    "beats_market": false,
-   "brier": 0.250606,
+   "brier": 0.249809,
    "label": "Live shadow book",
-   "market_brier": 0.164944,
-   "n": 3919
+   "market_brier": 0.165237,
+   "n": 3968
   },
   "pricer": {
    "beats_market": false,
@@ -353,7 +357,7 @@
    "n": 852937
   }
  },
- "generated_at": "2026-10-22T00:20:02+00:00",
+ "generated_at": "2026-10-23T00:01:31+00:00",
  "headline": {
   "engines_running": -0.81,
   "experiments_stopped": -25.38,
@@ -363,9 +367,9 @@
   ],
   "system_30d": -1.18
  },
- "last_mark": "2026-10-21",
+ "last_mark": "2026-10-22",
  "open_positions": 100,
- "risk_snapshots": 2830,
+ "risk_snapshots": 2875,
  "schema": 2,
  "settled_by_series": [
   {
@@ -478,7 +482,7 @@
  },
  "site": "https://kidusb9.github.io/kalshi-quant-research/",
  "trend_systems": {
-  "as_of": "2026-10-21",
+  "as_of": "2026-10-22",
   "available": true,
   "systems": [
    {
@@ -487,8 +491,8 @@
     "losses": 3,
     "name": "Crypto trend, spot",
     "open": [],
-    "pnl_since_start_pct": -0.16,
-    "pnl_since_start_usd": -2.09,
+    "pnl_since_start_pct": -0.17,
+    "pnl_since_start_usd": -2.11,
     "realized_usd": -1.94,
     "trades": [
      {
@@ -615,11 +619,11 @@
     "open": [
      {
       "asset": "QLD",
-      "unrealized_usd": -18.19
+      "unrealized_usd": -45.3
      }
     ],
-    "pnl_since_start_pct": -3.64,
-    "pnl_since_start_usd": -18.19,
+    "pnl_since_start_pct": -9.06,
+    "pnl_since_start_usd": -45.3,
     "realized_usd": 0,
     "trades": [
      {
@@ -634,6 +638,6 @@
     "wins": 0
    }
   ],
-  "total_since_each_start_usd": -36.16
+  "total_since_each_start_usd": -63.29
  }
 }
