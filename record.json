@@ -357,7 +357,7 @@
    "n": 852937
   }
  },
- "generated_at": "2026-10-23T00:01:31+00:00",
+ "generated_at": "2026-10-23T00:20:03+00:00",
  "headline": {
   "engines_running": -0.81,
   "experiments_stopped": -25.38,
@@ -369,7 +369,7 @@
  },
  "last_mark": "2026-10-22",
  "open_positions": 100,
- "risk_snapshots": 2875,
+ "risk_snapshots": 2876,
  "schema": 2,
  "settled_by_series": [
   {
