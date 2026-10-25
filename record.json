@@ -3,8 +3,8 @@
  "date": "2026-10-24",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
-  "change": 1077.48,
-  "current": 1454.77,
+  "change": 1082.89,
+  "current": 1460.18,
   "days": 83,
   "first": 377.29,
   "series": [
@@ -338,7 +338,7 @@
    },
    {
     "date": "2026-10-24",
-    "equity": 1454.77
+    "equity": 1460.18
    }
   ]
  },
@@ -365,7 +365,7 @@
    "n": 852937
   }
  },
- "generated_at": "2026-10-25T00:20:02+00:00",
+ "generated_at": "2026-10-25T01:48:27+00:00",
  "headline": {
   "engines_running": -4.92,
   "experiments_stopped": -25.38,
@@ -373,11 +373,11 @@
    "KXTEMPDCH",
    "KXWCTOTAL"
   ],
-  "system_30d": -7.38
+  "system_30d": -6.45
  },
  "last_mark": "2026-10-24",
  "open_positions": 100,
- "risk_snapshots": 2967,
+ "risk_snapshots": 2970,
  "schema": 2,
  "settled_by_series": [
   {
