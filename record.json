@@ -1,11 +1,11 @@
 {
  "data_age_days": 0,
- "date": "2026-10-23",
+ "date": "2026-10-24",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
-  "change": 1093.59,
-  "current": 1470.88,
-  "days": 82,
+  "change": 1077.48,
+  "current": 1454.77,
+  "days": 83,
   "first": 377.29,
   "series": [
    {
@@ -335,23 +335,27 @@
    {
     "date": "2026-10-23",
     "equity": 1470.88
+   },
+   {
+    "date": "2026-10-24",
+    "equity": 1454.77
    }
   ]
  },
  "forecast_scores": {
   "analyst": {
    "beats_market": false,
-   "brier": 0.165822,
+   "brier": 0.165383,
    "label": "Language model",
-   "market_brier": 0.075774,
-   "n": 8014
+   "market_brier": 0.075422,
+   "n": 8079
   },
   "model_desk": {
    "beats_market": false,
-   "brier": 0.248916,
+   "brier": 0.248591,
    "label": "Live shadow book",
-   "market_brier": 0.165647,
-   "n": 4052
+   "market_brier": 0.165529,
+   "n": 4061
   },
   "pricer": {
    "beats_market": false,
@@ -361,28 +365,28 @@
    "n": 852937
   }
  },
- "generated_at": "2026-10-24T00:20:02+00:00",
+ "generated_at": "2026-10-25T00:02:20+00:00",
  "headline": {
-  "engines_running": -0.81,
+  "engines_running": -4.92,
   "experiments_stopped": -25.38,
   "retired_series": [
    "KXTEMPDCH",
    "KXWCTOTAL"
   ],
-  "system_30d": -1.18
+  "system_30d": -7.38
  },
- "last_mark": "2026-10-23",
+ "last_mark": "2026-10-24",
  "open_positions": 100,
- "risk_snapshots": 2922,
+ "risk_snapshots": 2967,
  "schema": 2,
  "settled_by_series": [
   {
-   "as_of": "2026-10-03",
+   "as_of": "2026-10-24",
    "engine": "convergence",
-   "losses": 0,
-   "net_usd": 8.39,
+   "losses": 1,
+   "net_usd": 4.28,
    "series": "KXUFCFIGHT",
-   "settled": 9,
+   "settled": 10,
    "status": "promoted",
    "wins": 9
   },
@@ -478,15 +482,15 @@
   }
  ],
  "settled_totals": {
-  "as_of": "2026-10-21",
-  "losses": 45,
-  "net_usd": -26.19,
-  "settled": 127,
+  "as_of": "2026-10-24",
+  "losses": 46,
+  "net_usd": -30.3,
+  "settled": 128,
   "wins": 82
  },
  "site": "https://kidusb9.github.io/kalshi-quant-research/",
  "trend_systems": {
-  "as_of": "2026-10-23",
+  "as_of": "2026-10-24",
   "available": true,
   "systems": [
    {
@@ -496,7 +500,7 @@
     "name": "Crypto trend, spot",
     "open": [],
     "pnl_since_start_pct": -0.25,
-    "pnl_since_start_usd": -3.11,
+    "pnl_since_start_usd": -3.12,
     "realized_usd": -1.94,
     "trades": [
      {
@@ -642,6 +646,6 @@
     "wins": 0
    }
   ],
-  "total_since_each_start_usd": -64.87
+  "total_since_each_start_usd": -64.88
  }
 }
