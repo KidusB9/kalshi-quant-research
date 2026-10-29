@@ -1,11 +1,11 @@
 {
  "data_age_days": 0,
- "date": "2026-10-27",
+ "date": "2026-10-28",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
-  "change": 1031.33,
-  "current": 1408.62,
-  "days": 86,
+  "change": 1011.43,
+  "current": 1388.72,
+  "days": 87,
   "first": 377.29,
   "series": [
    {
@@ -351,23 +351,27 @@
    {
     "date": "2026-10-27",
     "equity": 1408.62
+   },
+   {
+    "date": "2026-10-28",
+    "equity": 1388.72
    }
   ]
  },
  "forecast_scores": {
   "analyst": {
    "beats_market": false,
-   "brier": 0.162133,
+   "brier": 0.161791,
    "label": "Language model",
-   "market_brier": 0.073854,
-   "n": 8463
+   "market_brier": 0.073911,
+   "n": 8560
   },
   "model_desk": {
    "beats_market": false,
-   "brier": 0.249413,
+   "brier": 0.249247,
    "label": "Live shadow book",
-   "market_brier": 0.166241,
-   "n": 4248
+   "market_brier": 0.166124,
+   "n": 4281
   },
   "pricer": {
    "beats_market": false,
@@ -377,19 +381,19 @@
    "n": 852937
   }
  },
- "generated_at": "2026-10-28T00:20:01+00:00",
+ "generated_at": "2026-10-29T00:00:34+00:00",
  "headline": {
-  "engines_running": -62.14,
+  "engines_running": -57.3,
   "experiments_stopped": -25.38,
   "retired_series": [
    "KXTEMPDCH",
    "KXWCTOTAL"
   ],
-  "system_30d": -7.6
+  "system_30d": -9.71
  },
- "last_mark": "2026-10-27",
+ "last_mark": "2026-10-28",
  "open_positions": 100,
- "risk_snapshots": 3105,
+ "risk_snapshots": 3151,
  "schema": 2,
  "settled_by_series": [
   {
@@ -495,14 +499,14 @@
  ],
  "settled_totals": {
   "as_of": "2026-10-24",
-  "losses": 94,
-  "net_usd": -87.52,
-  "settled": 279,
-  "wins": 185
+  "losses": 95,
+  "net_usd": -82.68,
+  "settled": 291,
+  "wins": 196
  },
  "site": "https://kidusb9.github.io/kalshi-quant-research/",
  "trend_systems": {
-  "as_of": "2026-10-27",
+  "as_of": "2026-10-28",
   "available": true,
   "systems": [
    {
@@ -512,7 +516,7 @@
     "name": "Crypto trend, spot",
     "open": [],
     "pnl_since_start_pct": -0.25,
-    "pnl_since_start_usd": -3.12,
+    "pnl_since_start_usd": -3.11,
     "realized_usd": -1.94,
     "trades": [
      {
@@ -639,11 +643,11 @@
     "open": [
      {
       "asset": "QLD",
-      "unrealized_usd": -24.29
+      "unrealized_usd": -18.56
      }
     ],
-    "pnl_since_start_pct": -4.86,
-    "pnl_since_start_usd": -24.29,
+    "pnl_since_start_pct": -3.71,
+    "pnl_since_start_usd": -18.56,
     "realized_usd": 0,
     "trades": [
      {
@@ -658,6 +662,6 @@
     "wins": 0
    }
   ],
-  "total_since_each_start_usd": -43.29
+  "total_since_each_start_usd": -37.55
  }
 }
