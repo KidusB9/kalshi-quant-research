@@ -384,10 +384,10 @@
   },
   "model_desk": {
    "beats_market": false,
-   "brier": 0.24744,
+   "brier": 0.247398,
    "label": "Live shadow book",
-   "market_brier": 0.166574,
-   "n": 4409
+   "market_brier": 0.16661,
+   "n": 4410
   },
   "pricer": {
    "beats_market": false,
@@ -397,7 +397,7 @@
    "n": 852937
   }
  },
- "generated_at": "2026-11-02T01:02:12+00:00",
+ "generated_at": "2026-11-02T01:20:02+00:00",
  "headline": {
   "engines_running": -54.74,
   "experiments_stopped": -25.38,
@@ -409,7 +409,7 @@
  },
  "last_mark": "2026-11-01",
  "open_positions": 100,
- "risk_snapshots": 3334,
+ "risk_snapshots": 3335,
  "schema": 2,
  "settled_by_series": [
   {
