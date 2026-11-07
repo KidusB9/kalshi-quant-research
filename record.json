@@ -1,11 +1,11 @@
 {
  "data_age_days": 0,
- "date": "2026-11-05",
+ "date": "2026-11-06",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
-  "change": 809.72,
-  "current": 1187.01,
-  "days": 95,
+  "change": 736.84,
+  "current": 1114.13,
+  "days": 96,
   "first": 377.29,
   "series": [
    {
@@ -387,6 +387,10 @@
    {
     "date": "2026-11-05",
     "equity": 1187.01
+   },
+   {
+    "date": "2026-11-06",
+    "equity": 1114.13
    }
   ]
  },
@@ -400,10 +404,10 @@
   },
   "model_desk": {
    "beats_market": false,
-   "brier": 0.246557,
+   "brier": 0.247928,
    "label": "Live shadow book",
-   "market_brier": 0.168311,
-   "n": 4753
+   "market_brier": 0.16869,
+   "n": 4815
   },
   "pricer": {
    "beats_market": false,
@@ -413,19 +417,19 @@
    "n": 852937
   }
  },
- "generated_at": "2026-11-06T01:20:02+00:00",
+ "generated_at": "2026-11-07T01:00:37+00:00",
  "headline": {
-  "engines_running": -44.87,
+  "engines_running": -40.31,
   "experiments_stopped": -25.38,
   "retired_series": [
    "KXTEMPDCH",
    "KXWCTOTAL"
   ],
-  "system_30d": 32.7
+  "system_30d": -69.91
  },
- "last_mark": "2026-11-05",
- "open_positions": 42,
- "risk_snapshots": 3519,
+ "last_mark": "2026-11-06",
+ "open_positions": 30,
+ "risk_snapshots": 3564,
  "schema": 2,
  "settled_by_series": [
   {
@@ -499,16 +503,6 @@
    "wins": 6
   },
   {
-   "as_of": "2026-11-05",
-   "engine": "elecfav",
-   "losses": 5,
-   "net_usd": -4.25,
-   "series": "KXHOUSERACE",
-   "settled": 46,
-   "status": "benched",
-   "wins": 41
-  },
-  {
    "as_of": "2026-11-04",
    "engine": "convergence",
    "losses": 2,
@@ -517,6 +511,16 @@
    "settled": 9,
    "status": "promoted",
    "wins": 7
+  },
+  {
+   "as_of": "2026-11-06",
+   "engine": "elecfav",
+   "losses": 6,
+   "net_usd": -6.41,
+   "series": "KXHOUSERACE",
+   "settled": 50,
+   "status": "benched",
+   "wins": 44
   },
   {
    "as_of": "2026-09-06",
@@ -540,15 +544,15 @@
   }
  ],
  "settled_totals": {
-  "as_of": "2026-11-05",
-  "losses": 107,
-  "net_usd": -70.25,
-  "settled": 408,
-  "wins": 301
+  "as_of": "2026-11-06",
+  "losses": 111,
+  "net_usd": -65.69,
+  "settled": 432,
+  "wins": 321
  },
  "site": "https://kidusb9.github.io/kalshi-quant-research/",
  "trend_systems": {
-  "as_of": "2026-11-05",
+  "as_of": "2026-11-06",
   "available": true,
   "systems": [
    {
@@ -678,20 +682,34 @@
     "wins": 0
    },
    {
-    "closed_trades": 0,
+    "closed_trades": 1,
     "live_since": "2026-10-11",
-    "losses": 0,
+    "losses": 1,
     "name": "Nasdaq trend, 2x fund",
     "open": [
      {
-      "asset": "QLD",
-      "unrealized_usd": -118.23
+      "asset": "SGOV",
+      "unrealized_usd": 0.0
      }
     ],
-    "pnl_since_start_pct": -23.65,
-    "pnl_since_start_usd": -118.23,
-    "realized_usd": 0,
+    "pnl_since_start_pct": -21.21,
+    "pnl_since_start_usd": -106.04,
+    "realized_usd": -106.04,
     "trades": [
+     {
+      "asset": "SGOV",
+      "date": "2026-11-06",
+      "pnl_usd": null,
+      "price_usd": 100.4898,
+      "side": "BUY"
+     },
+     {
+      "asset": "QLD",
+      "date": "2026-11-06",
+      "pnl_usd": -106.04,
+      "price_usd": 74.61,
+      "side": "SELL"
+     },
      {
       "asset": "QLD",
       "date": "2026-10-14",
@@ -704,6 +722,6 @@
     "wins": 0
    }
   ],
-  "total_since_each_start_usd": -137.28
+  "total_since_each_start_usd": -125.09
  }
 }
