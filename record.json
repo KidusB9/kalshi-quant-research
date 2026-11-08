@@ -1,11 +1,11 @@
 {
  "data_age_days": 0,
- "date": "2026-11-06",
+ "date": "2026-11-07",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
-  "change": 736.84,
-  "current": 1114.13,
-  "days": 96,
+  "change": 737.93,
+  "current": 1115.22,
+  "days": 97,
   "first": 377.29,
   "series": [
    {
@@ -391,6 +391,10 @@
    {
     "date": "2026-11-06",
     "equity": 1114.13
+   },
+   {
+    "date": "2026-11-07",
+    "equity": 1115.22
    }
   ]
  },
@@ -404,10 +408,10 @@
   },
   "model_desk": {
    "beats_market": false,
-   "brier": 0.247928,
+   "brier": 0.247367,
    "label": "Live shadow book",
-   "market_brier": 0.16869,
-   "n": 4815
+   "market_brier": 0.168195,
+   "n": 4894
   },
   "pricer": {
    "beats_market": false,
@@ -417,19 +421,19 @@
    "n": 852937
   }
  },
- "generated_at": "2026-11-07T01:20:03+00:00",
+ "generated_at": "2026-11-08T01:01:35+00:00",
  "headline": {
-  "engines_running": -40.31,
+  "engines_running": -139.11,
   "experiments_stopped": -25.38,
   "retired_series": [
    "KXTEMPDCH",
    "KXWCTOTAL"
   ],
-  "system_30d": -69.91
+  "system_30d": -64.71
  },
- "last_mark": "2026-11-06",
- "open_positions": 30,
- "risk_snapshots": 3564,
+ "last_mark": "2026-11-07",
+ "open_positions": 31,
+ "risk_snapshots": 3609,
  "schema": 2,
  "settled_by_series": [
   {
@@ -545,14 +549,14 @@
  ],
  "settled_totals": {
   "as_of": "2026-11-06",
-  "losses": 111,
-  "net_usd": -65.69,
-  "settled": 432,
-  "wins": 321
+  "losses": 112,
+  "net_usd": -164.49,
+  "settled": 444,
+  "wins": 332
  },
  "site": "https://kidusb9.github.io/kalshi-quant-research/",
  "trend_systems": {
-  "as_of": "2026-11-06",
+  "as_of": "2026-11-07",
   "available": true,
   "systems": [
    {
