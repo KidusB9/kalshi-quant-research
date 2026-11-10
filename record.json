@@ -1,11 +1,11 @@
 {
  "data_age_days": 0,
- "date": "2026-11-08",
+ "date": "2026-11-09",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
-  "change": 739.7,
-  "current": 1116.99,
-  "days": 98,
+  "change": 640.64,
+  "current": 1017.93,
+  "days": 99,
   "first": 377.29,
   "series": [
    {
@@ -399,23 +399,27 @@
    {
     "date": "2026-11-08",
     "equity": 1116.99
+   },
+   {
+    "date": "2026-11-09",
+    "equity": 1017.93
    }
   ]
  },
  "forecast_scores": {
   "analyst": {
    "beats_market": false,
-   "brier": 0.161844,
+   "brier": 0.16179,
    "label": "Language model",
-   "market_brier": 0.072376,
-   "n": 8990
+   "market_brier": 0.072352,
+   "n": 8993
   },
   "model_desk": {
    "beats_market": false,
-   "brier": 0.247245,
+   "brier": 0.249311,
    "label": "Live shadow book",
-   "market_brier": 0.168111,
-   "n": 4902
+   "market_brier": 0.168591,
+   "n": 5025
   },
   "pricer": {
    "beats_market": false,
@@ -425,19 +429,19 @@
    "n": 852937
   }
  },
- "generated_at": "2026-11-09T01:20:02+00:00",
+ "generated_at": "2026-11-10T01:00:33+00:00",
  "headline": {
-  "engines_running": -134.53,
+  "engines_running": -130.77,
   "experiments_stopped": -25.38,
   "retired_series": [
    "KXTEMPDCH",
    "KXWCTOTAL"
   ],
-  "system_30d": -63.75
+  "system_30d": -163.09
  },
- "last_mark": "2026-11-08",
- "open_positions": 33,
- "risk_snapshots": 3656,
+ "last_mark": "2026-11-09",
+ "open_positions": 28,
+ "risk_snapshots": 3701,
  "schema": 2,
  "settled_by_series": [
   {
@@ -553,14 +557,14 @@
  ],
  "settled_totals": {
   "as_of": "2026-11-07",
-  "losses": 113,
-  "net_usd": -159.91,
-  "settled": 453,
-  "wins": 340
+  "losses": 115,
+  "net_usd": -156.15,
+  "settled": 466,
+  "wins": 351
  },
  "site": "https://kidusb9.github.io/kalshi-quant-research/",
  "trend_systems": {
-  "as_of": "2026-11-08",
+  "as_of": "2026-11-09",
   "available": true,
   "systems": [
    {
@@ -570,7 +574,7 @@
     "name": "Crypto trend, spot",
     "open": [],
     "pnl_since_start_pct": -0.25,
-    "pnl_since_start_usd": -3.19,
+    "pnl_since_start_usd": -3.18,
     "realized_usd": -1.94,
     "trades": [
      {
@@ -697,11 +701,11 @@
     "open": [
      {
       "asset": "SGOV",
-      "unrealized_usd": 0.0
+      "unrealized_usd": 0.04
      }
     ],
-    "pnl_since_start_pct": -21.21,
-    "pnl_since_start_usd": -106.04,
+    "pnl_since_start_pct": -21.2,
+    "pnl_since_start_usd": -106.01,
     "realized_usd": -106.04,
     "trades": [
      {
@@ -730,6 +734,6 @@
     "wins": 0
    }
   ],
-  "total_since_each_start_usd": -125.11
+  "total_since_each_start_usd": -125.07
  }
 }
