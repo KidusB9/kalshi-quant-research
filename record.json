@@ -437,7 +437,7 @@
    "n": 852937
   }
  },
- "generated_at": "2026-11-12T01:02:25+00:00",
+ "generated_at": "2026-11-12T01:20:01+00:00",
  "headline": {
   "engines_running": -214.69,
   "experiments_stopped": -25.38,
@@ -592,7 +592,7 @@
     "name": "Crypto trend, spot",
     "open": [],
     "pnl_since_start_pct": -0.25,
-    "pnl_since_start_usd": -3.21,
+    "pnl_since_start_usd": -3.22,
     "realized_usd": -1.94,
     "trades": [
      {
@@ -752,6 +752,6 @@
     "wins": 0
    }
   ],
-  "total_since_each_start_usd": -125.02
+  "total_since_each_start_usd": -125.03
  }
 }
