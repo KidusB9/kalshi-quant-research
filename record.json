@@ -1,11 +1,11 @@
 {
  "data_age_days": 0,
- "date": "2026-11-11",
+ "date": "2026-11-12",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
-  "change": 660.66,
-  "current": 1037.95,
-  "days": 101,
+  "change": 694.1,
+  "current": 1071.39,
+  "days": 102,
   "first": 377.29,
   "series": [
    {
@@ -411,23 +411,27 @@
    {
     "date": "2026-11-11",
     "equity": 1037.95
+   },
+   {
+    "date": "2026-11-12",
+    "equity": 1071.39
    }
   ]
  },
  "forecast_scores": {
   "analyst": {
    "beats_market": false,
-   "brier": 0.16179,
+   "brier": 0.161774,
    "label": "Language model",
-   "market_brier": 0.072352,
-   "n": 8993
+   "market_brier": 0.072346,
+   "n": 8994
   },
   "model_desk": {
    "beats_market": false,
-   "brier": 0.249095,
+   "brier": 0.249797,
    "label": "Live shadow book",
-   "market_brier": 0.169353,
-   "n": 5137
+   "market_brier": 0.169291,
+   "n": 5221
   },
   "pricer": {
    "beats_market": false,
@@ -437,19 +441,19 @@
    "n": 852937
   }
  },
- "generated_at": "2026-11-12T01:20:01+00:00",
+ "generated_at": "2026-11-13T01:02:07+00:00",
  "headline": {
-  "engines_running": -214.69,
+  "engines_running": -212.44,
   "experiments_stopped": -25.38,
   "retired_series": [
    "KXTEMPDCH",
    "KXWCTOTAL"
   ],
-  "system_30d": -145.94
+  "system_30d": -130.65
  },
- "last_mark": "2026-11-11",
- "open_positions": 19,
- "risk_snapshots": 3793,
+ "last_mark": "2026-11-12",
+ "open_positions": 17,
+ "risk_snapshots": 3838,
  "schema": 2,
  "settled_by_series": [
   {
@@ -523,16 +527,6 @@
    "wins": 6
   },
   {
-   "as_of": "2026-11-11",
-   "engine": "elecfav",
-   "losses": 6,
-   "net_usd": -5.21,
-   "series": "KXHOUSERACE",
-   "settled": 53,
-   "status": "benched",
-   "wins": 47
-  },
-  {
    "as_of": "2026-11-04",
    "engine": "convergence",
    "losses": 2,
@@ -553,6 +547,16 @@
    "wins": 0
   },
   {
+   "as_of": "2026-11-11",
+   "engine": "elecfav",
+   "losses": 7,
+   "net_usd": -8.64,
+   "series": "KXHOUSERACE",
+   "settled": 54,
+   "status": "benched",
+   "wins": 47
+  },
+  {
    "as_of": "2026-09-06",
    "engine": "model",
    "losses": 10,
@@ -563,26 +567,26 @@
    "wins": 2
   },
   {
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-11",
    "engine": "ladder100",
    "losses": 2,
-   "net_usd": -27.02,
+   "net_usd": -26.89,
    "series": "KXBTC",
-   "settled": 10,
+   "settled": 11,
    "status": "benched",
-   "wins": 8
+   "wins": 9
   }
  ],
  "settled_totals": {
   "as_of": "2026-11-11",
-  "losses": 119,
-  "net_usd": -240.07,
-  "settled": 498,
-  "wins": 379
+  "losses": 120,
+  "net_usd": -237.82,
+  "settled": 509,
+  "wins": 389
  },
  "site": "https://kidusb9.github.io/kalshi-quant-research/",
  "trend_systems": {
-  "as_of": "2026-11-11",
+  "as_of": "2026-11-12",
   "available": true,
   "systems": [
    {
@@ -591,8 +595,8 @@
     "losses": 3,
     "name": "Crypto trend, spot",
     "open": [],
-    "pnl_since_start_pct": -0.25,
-    "pnl_since_start_usd": -3.22,
+    "pnl_since_start_pct": -0.26,
+    "pnl_since_start_usd": -3.25,
     "realized_usd": -1.94,
     "trades": [
      {
@@ -712,20 +716,34 @@
     "wins": 0
    },
    {
-    "closed_trades": 1,
+    "closed_trades": 2,
     "live_since": "2026-10-11",
     "losses": 1,
     "name": "Nasdaq trend, 2x fund",
     "open": [
      {
-      "asset": "SGOV",
-      "unrealized_usd": 0.11
+      "asset": "QLD",
+      "unrealized_usd": 9.06
      }
     ],
-    "pnl_since_start_pct": -21.19,
-    "pnl_since_start_usd": -105.93,
-    "realized_usd": -106.04,
+    "pnl_since_start_pct": -19.38,
+    "pnl_since_start_usd": -96.88,
+    "realized_usd": -105.93,
     "trades": [
+     {
+      "asset": "QLD",
+      "date": "2026-11-12",
+      "pnl_usd": null,
+      "price_usd": 79.455,
+      "side": "BUY"
+     },
+     {
+      "asset": "SGOV",
+      "date": "2026-11-12",
+      "pnl_usd": 0.11,
+      "price_usd": 100.52,
+      "side": "SELL"
+     },
      {
       "asset": "SGOV",
       "date": "2026-11-06",
@@ -749,9 +767,9 @@
      }
     ],
     "venue": "Alpaca",
-    "wins": 0
+    "wins": 1
    }
   ],
-  "total_since_each_start_usd": -125.03
+  "total_since_each_start_usd": -116.01
  }
 }
