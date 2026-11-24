@@ -1,11 +1,11 @@
 {
  "data_age_days": 0,
- "date": "2026-11-22",
+ "date": "2026-11-23",
  "disclaimer": "Not financial advice. Past results are no guarantee of future results. Numbers come straight from my internal ledgers and may contain errors.",
  "equity": {
-  "change": 698.68,
-  "current": 1075.97,
-  "days": 112,
+  "change": 752.0,
+  "current": 1129.29,
+  "days": 113,
   "first": 377.29,
   "series": [
    {
@@ -455,6 +455,10 @@
    {
     "date": "2026-11-22",
     "equity": 1075.97
+   },
+   {
+    "date": "2026-11-23",
+    "equity": 1129.29
    }
   ]
  },
@@ -468,10 +472,10 @@
   },
   "model_desk": {
    "beats_market": false,
-   "brier": 0.245049,
+   "brier": 0.246563,
    "label": "Live shadow book",
-   "market_brier": 0.170696,
-   "n": 5752
+   "market_brier": 0.171459,
+   "n": 5910
   },
   "pricer": {
    "beats_market": false,
@@ -481,21 +485,31 @@
    "n": 852937
   }
  },
- "generated_at": "2026-11-23T01:20:01+00:00",
+ "generated_at": "2026-11-24T01:03:10+00:00",
  "headline": {
-  "engines_running": -199.64,
+  "engines_running": -189.89,
   "experiments_stopped": -25.38,
   "retired_series": [
    "KXTEMPDCH",
    "KXWCTOTAL"
   ],
-  "system_30d": -133.83
+  "system_30d": -86.29
  },
- "last_mark": "2026-11-22",
- "open_positions": 14,
- "risk_snapshots": 4295,
+ "last_mark": "2026-11-23",
+ "open_positions": 16,
+ "risk_snapshots": 4340,
  "schema": 2,
  "settled_by_series": [
+  {
+   "as_of": "2026-11-23",
+   "engine": "ladder100",
+   "losses": 1,
+   "net_usd": 27.96,
+   "series": "KXSILVERD",
+   "settled": 5,
+   "status": "promoted",
+   "wins": 4
+  },
   {
    "as_of": "2026-11-22",
    "engine": "ladder100",
@@ -617,24 +631,24 @@
    "wins": 2
   },
   {
-   "as_of": "2026-11-22",
+   "as_of": "2026-11-23",
    "engine": "ladder100",
    "losses": 6,
-   "net_usd": -29.84,
+   "net_usd": -29.7,
    "series": "KXBTC",
-   "settled": 21,
+   "settled": 22,
    "status": "benched",
-   "wins": 15
+   "wins": 16
   },
   {
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-23",
    "engine": "ladder100",
    "losses": 1,
-   "net_usd": -33.16,
+   "net_usd": -33.0,
    "series": "KXGOLDD",
-   "settled": 11,
+   "settled": 12,
    "status": "benched",
-   "wins": 10
+   "wins": 11
   },
   {
    "as_of": "2026-11-20",
@@ -648,15 +662,15 @@
   }
  ],
  "settled_totals": {
-  "as_of": "2026-11-22",
-  "losses": 142,
-  "net_usd": -225.02,
-  "settled": 668,
-  "wins": 526
+  "as_of": "2026-11-23",
+  "losses": 144,
+  "net_usd": -215.27,
+  "settled": 685,
+  "wins": 541
  },
  "site": "https://kidusb9.github.io/kalshi-quant-research/",
  "trend_systems": {
-  "as_of": "2026-11-22",
+  "as_of": "2026-11-23",
   "available": true,
   "systems": [
    {
